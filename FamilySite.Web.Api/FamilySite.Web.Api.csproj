@@ -1,0 +1,33 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <UserSecretsId>aspnet-FamilySite.Web.Api-936AEEC5-2BF8-4FD9-A6C5-F0FFE49A08F6</UserSecretsId>
+  </PropertyGroup>
+
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="6.2.2" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="3.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.5" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="2.0.1" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.0.2" PrivateAssets="All" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <DotNetCliToolReference Include="Microsoft.EntityFrameworkCore.Tools.DotNet" Version="2.0.1" />
+    <DotNetCliToolReference Include="Microsoft.Extensions.SecretManager.Tools" Version="2.0.0" />
+    <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\FamilySite.Data.Contracts\FamilySite.Data.Contracts.csproj" />
+    <ProjectReference Include="..\FamilySite.Data\FamilySite.Data.csproj" />
+    <ProjectReference Include="..\FamilySite.Dtos\FamilySite.Dtos.csproj" />
+    <ProjectReference Include="..\FamilySite.IoC\FamilySite.IoC.csproj" />
+    <ProjectReference Include="..\FamilySite.Models\FamilySite.Models.csproj" />
+    <ProjectReference Include="..\FamilySite.Services.Contracts\FamilySite.Services.Contracts.csproj" />
+    <ProjectReference Include="..\FamilySite.Services\FamilySite.Services.csproj" />
+  </ItemGroup>
+
+</Project>

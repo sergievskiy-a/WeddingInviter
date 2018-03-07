@@ -1,0 +1,5 @@
+<h1>Invite</h1>
+<p *ngIf="!forecasts"><em>Loading...</em></p>
+
+<p>Dear <span *ngFor="let guest of invite.guests">{{ guest.firstName }}, </span> </p>
+<p>{{ invite.description }}</p>

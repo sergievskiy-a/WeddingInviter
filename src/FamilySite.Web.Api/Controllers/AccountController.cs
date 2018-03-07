@@ -13,6 +13,7 @@ using Microsoft.Extensions.Options;
 using FamilySite.Web.Api.Models;
 using FamilySite.Web.Api.Models.AccountViewModels;
 using FamilySite.Web.Api.Services;
+using FamilySite.Data.Entites;
 
 namespace FamilySite.Web.Api.Controllers
 {

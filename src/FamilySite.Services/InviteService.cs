@@ -22,7 +22,7 @@ namespace FamilySite.Services
             this.mapper = mapper;
         }
 
-        public TResult GetInvite<TResult>(Guid id)
+        public TResult GetInvite<TResult>(int id)
         {
             var invite = this.inviteRepository
                 .GetMany(x => x.Id == id)
@@ -44,7 +44,7 @@ namespace FamilySite.Services
             return invite;
         }
 
-        public Guid AddInvite(InviteModel model)
+        public int AddInvite(InviteModel model)
         {
             var inviteEntity = this.mapper.Map<Invite>(model);
 
@@ -67,7 +67,7 @@ namespace FamilySite.Services
             this.inviteRepository.Save();
         }
 
-        public void DeleteWedding(Guid id)
+        public void DeleteInvite(int id)
         {
             var inviteEntity = this.inviteRepository.GetSingle(x => x.Id == id);
             if (inviteEntity == null) throw new Exception("Not found");

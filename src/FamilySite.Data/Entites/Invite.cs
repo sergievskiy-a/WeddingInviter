@@ -5,7 +5,7 @@ namespace FamilySite.Data.Entites
 {
     public class Invite
     {
-        public Guid Id { get; set; }
+        public int Id { get; set; }
         public string Alias { get; set; }
         public string Description { get; set; }
 

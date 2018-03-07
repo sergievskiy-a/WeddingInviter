@@ -1,17 +1,16 @@
-﻿using System;
-using FamilySite.Models;
+﻿using FamilySite.Models;
 
 namespace FamilySite.Services.Contracts
 {
     public interface IInviteService
     {
-        TResult GetInvite<TResult>(Guid id);
+        TResult GetInvite<TResult>(int id);
         TResult GetInvite<TResult>(string alias);
 
-        Guid AddInvite(InviteModel model);
+        int AddInvite(InviteModel model);
 
         void UpdateInvite(InviteModel model);
 
-        void DeleteWedding(Guid id);
+        void DeleteInvite(int id);
     }
 }

@@ -44,6 +44,8 @@ namespace FamilySite.Web.Api
 
             services.AddTransient<IInviteService, InviteService>();
             services.AddTransient<IGuestService, GuestService>();
+
+            services.AddCors();
             services.AddMvc();
         }
 
@@ -64,6 +66,8 @@ namespace FamilySite.Web.Api
             app.UseStaticFiles();
 
             app.UseAuthentication();
+
+            app.UseCors(builder => builder.AllowAnyOrigin());
 
             app.UseMvc(routes =>
             {

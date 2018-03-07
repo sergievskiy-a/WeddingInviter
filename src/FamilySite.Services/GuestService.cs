@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using AutoMapper;
 using AutoMapper.QueryableExtensions;
@@ -41,6 +42,13 @@ namespace FamilySite.Services
             this.guestRepository.Save();
 
             return guestEntity.Id;
+        }
+
+        public void AddGuests(ICollection<GuestModel> models)
+        {
+            var guestEntities = this.mapper.Map<List<Guest>>(models);
+            this.guestRepository.AddRange(guestEntities);
+            this.guestRepository.Save();
         }
 
         public void UpdateGuest(GuestModel model)

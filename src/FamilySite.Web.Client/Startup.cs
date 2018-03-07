@@ -18,6 +18,7 @@ namespace FamilySite.Web.Client
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors();
             services.AddMvc();
 
             // In production, the Angular files will be served from this directory
@@ -41,6 +42,11 @@ namespace FamilySite.Web.Client
 
             app.UseStaticFiles();
             app.UseSpaStaticFiles();
+
+            app.UseCors(builder =>
+                builder.WithOrigins("http://localhost.5000")
+                    .AllowAnyHeader()
+            );
 
             app.UseMvc(routes =>
             {

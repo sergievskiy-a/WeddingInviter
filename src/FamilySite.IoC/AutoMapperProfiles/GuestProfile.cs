@@ -12,7 +12,11 @@ namespace FamilySite.IoC.AutoMapperProfiles
         {
             // Get
             CreateMap<GuestModel, Guest>();
-            CreateMap<Guest, BaseGuestDto>();
+
+            CreateMap<Guest, BaseGuestDto>()
+                .Include<Guest, GetGuestDto>();
+
+            CreateMap<Guest, GetGuestDto>();
 
             //Create
             CreateMap<BaseGuestDto, GuestModel>()

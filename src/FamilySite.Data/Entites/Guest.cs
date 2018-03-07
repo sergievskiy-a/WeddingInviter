@@ -9,7 +9,7 @@ namespace FamilySite.Data.Entites
         public string LastName { get; set; }
         public string PhoneNumber { get; set; }
         public bool FromGroom { get; set; }
-        public Guid InviteId { get; set; }
+        public int InviteId { get; set; }
 
         public Invite Invite { get; set; }
     }

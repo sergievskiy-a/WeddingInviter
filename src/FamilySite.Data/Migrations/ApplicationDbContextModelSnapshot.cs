@@ -80,7 +80,7 @@ namespace FamilySite.Data.Migrations
 
                     b.Property<bool>("FromGroom");
 
-                    b.Property<Guid>("InviteId");
+                    b.Property<int>("InviteId");
 
                     b.Property<string>("LastName");
 
@@ -95,7 +95,7 @@ namespace FamilySite.Data.Migrations
 
             modelBuilder.Entity("FamilySite.Data.Entites.Invite", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
                     b.Property<string>("Alias");

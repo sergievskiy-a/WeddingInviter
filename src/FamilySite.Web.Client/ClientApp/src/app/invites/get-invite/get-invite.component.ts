@@ -1,4 +1,5 @@
-import { Component, Inject } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
+import {ActivatedRoute} from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { Invite } from '../../models/invite';
 import { Guest } from '../../models/guest';
@@ -8,13 +9,21 @@ import { Guest } from '../../models/guest';
   templateUrl: './get-invite.component.html',
   styleUrls: ['./get-invite.component.css']
 })
-export class GetInviteComponent {
+export class GetInviteComponent implements OnInit {
 
+  public alias: string;
   public invite: Invite;
   public greeting: string;
 
-  constructor(http: HttpClient, @Inject('BASE_URL') baseUrl: string) {
-    http.get<Invite>('http://localhost:5000/api/invite/alias').subscribe(result => {
+  constructor(private http: HttpClient, private route: ActivatedRoute) {
+  }
+
+  ngOnInit() {
+    this.route.params.subscribe(params => {
+       this.alias = params['alias'];
+    });
+
+    this.http.get<Invite>('http://localhost:5000/api/invite/' + this.alias).subscribe(result => {
       this.invite = result;
       this.setGreeting(this.invite.guests);
     }, error => console.error(error));

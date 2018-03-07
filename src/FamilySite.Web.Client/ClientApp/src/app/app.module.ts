@@ -28,8 +28,8 @@ import { GetInviteComponent } from './invites/get-invite/get-invite.component';
     FormsModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
-      { path: 'invite', component: GetInviteComponent },
-      { path: 'invite/create', component: CreateInviteComponent },
+      { path: 'i/:alias', component: GetInviteComponent },
+      { path: 'invite/create', component: CreateInviteComponent},
       { path: 'counter', component: CounterComponent },
       { path: 'fetch-data', component: FetchDataComponent },
     ])

@@ -27,33 +27,9 @@ namespace FamilySite.Web.Api.Controllers
         [HttpGet("{alias}")]
         public IActionResult Get(string alias)
         {
-            //var inviteDto = this.inviteService.GetInvite<GetInviteDto>(alias);
+            var inviteDto = this.inviteService.GetInvite<GetInviteDto>(alias);
 
-            return Ok(new GetInviteDto
-            {
-                Id = 1,
-                Alias = alias,
-                Description = "Hello",
-                Guests = new List<GetGuestDto>
-                {
-                    new GetGuestDto
-                    {
-                        Id = 1,
-                        FirstName = "Ruslan",
-                        LastName = "Kulyk",
-                        FromGroom = true,
-                        PhoneNumber = "093 888 89 99"
-                    },
-                    new GetGuestDto
-                    {
-                        Id = 2,
-                        FirstName = "Natasha",
-                        LastName = "Kulyk",
-                        FromGroom = true,
-                        PhoneNumber = "093 777 77 99"
-                    }
-                }
-            });
+            return Ok(inviteDto);
         }
 
         [HttpPost, Authorize]
@@ -64,31 +40,7 @@ namespace FamilySite.Web.Api.Controllers
 
             var result = this.inviteService.GetInvite<GetInviteDto>(id);
 
-            return Ok(new GetInviteDto
-            {
-                Id = 1,
-                Alias = dto.Alias,
-                Description = dto.Description,
-                Guests = new List<GetGuestDto>
-                {
-                    new GetGuestDto
-                    {
-                        Id = 1,
-                        FirstName = "Ruslan",
-                        LastName = "Kulyk",
-                        FromGroom = true,
-                        PhoneNumber = "093 888 89 99"
-                    },
-                    new GetGuestDto
-                    {
-                        Id = 2,
-                        FirstName = "Natasha",
-                        LastName = "Kulyk",
-                        FromGroom = true,
-                        PhoneNumber = "093 777 77 99"
-                    }
-                }
-            });
+            return Ok(result);
         }
 
         [HttpPut("{id}"), Authorize]

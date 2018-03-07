@@ -11,11 +11,18 @@ namespace FamilySite.IoC.AutoMapperProfiles
         {
             // Get
             CreateMap<InviteModel, Invite>();
-            CreateMap<Invite, BaseInviteDto>();
+
+            CreateMap<Invite, BaseInviteDto>()
+                .Include<Invite, GetInviteDto>();
+
+            CreateMap<Invite, GetInviteDto>();
 
             //Create
             CreateMap<BaseInviteDto, InviteModel>()
-                .ForMember(x => x.Id, opt => opt.Ignore());
+                .ForMember(x => x.Id, opt => opt.Ignore())
+                .Include<CreateInviteDto, InviteModel>();
+
+            CreateMap<CreateInviteDto, InviteModel>();
 
             //Update
             CreateMap<UpdateInviteDto, InviteModel>();

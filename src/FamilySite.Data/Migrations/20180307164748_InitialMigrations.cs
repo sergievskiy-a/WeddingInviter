@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace FamilySite.Data.Migrations
 {
-    public partial class Init : Migration
+    public partial class InitialMigrations : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -52,7 +52,8 @@ namespace FamilySite.Data.Migrations
                 name: "Invites",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(nullable: false),
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Alias = table.Column<string>(nullable: true),
                     Description = table.Column<string>(nullable: true)
                 },
@@ -175,7 +176,7 @@ namespace FamilySite.Data.Migrations
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     FirstName = table.Column<string>(nullable: true),
                     FromGroom = table.Column<bool>(nullable: false),
-                    InviteId = table.Column<Guid>(nullable: false),
+                    InviteId = table.Column<int>(nullable: false),
                     LastName = table.Column<string>(nullable: true),
                     PhoneNumber = table.Column<string>(nullable: true)
                 },

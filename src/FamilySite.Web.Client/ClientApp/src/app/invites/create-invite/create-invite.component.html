@@ -1,5 +1,20 @@
 <h1>Invite</h1>
-<p *ngIf="!forecasts"><em>Loading...</em></p>
+<p *ngIf="!invite">
+  <em>Loading...</em>
+</p>
+<div *ngIf="invite">
+  <h3>Invite:</h3>
+  <p> <input type="text" placeholder="Alias" [(ngModel)]="invite.alias" /> </p>
+  <p> <input type="text" placeholder="Message" [(ngModel)]="invite.description" /> </p>
 
-<p>Dear <span *ngFor="let guest of invite.guests">{{ guest.firstName }}, </span> </p>
-<p>{{ invite.description }}</p>
+  <div *ngFor="let guest of invite.guests; let i = index">
+    <h3>{{ i + 1 }} guest:</h3>
+    <p> <input type="text" placeholder="First name" [(ngModel)]="guest.firstName" /> </p>
+    <p> <input type="text" placeholder="Last name" [(ngModel)]="guest.lastName" /> </p>
+    <p> <input type="text" placeholder="Phone number" [(ngModel)]="guest.phoneNumber" /> </p>
+    <p> Is from groom?: <input type="checkbox" [(ngModel)]="guest.fromGroom" /> </p>
+  </div>
+
+  <button (click)="addGuest()">Add guest</button>
+  <button (click)="save()">Save</button>
+</div>

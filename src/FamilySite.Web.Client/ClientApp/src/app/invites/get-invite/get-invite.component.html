@@ -3,8 +3,6 @@
   <em>Loading...</em>
 </p>
 <div *ngIf="invite">
-  <p>Dear
-    <span *ngFor="let guest of invite.guests">{{ guest.firstName }}, </span>
-  </p>
+  <p>{{ greeting }}</p>
   <p>{{ invite.description }}</p>
 </div>

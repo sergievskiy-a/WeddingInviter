@@ -1,8 +1,8 @@
 import { Guest } from './guest';
 
-export interface Invite {
+export class Invite {
     id: number;
     alias: string;
     description: string;
-    guests: Guest[];
+    guests: Guest[] = [];
 }

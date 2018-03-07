@@ -9,12 +9,19 @@ import { Guest } from '../../models/guest';
   styleUrls: ['./create-invite.component.css']
 })
 export class CreateInviteComponent {
-
   public invite: Invite;
 
-  constructor(http: HttpClient, @Inject('BASE_URL') baseUrl: string) {
-    http.get<Invite>(baseUrl + 'api/invite/alias').subscribe(result => {
-      this.invite = result;
+  constructor(private http: HttpClient) {
+    this.invite = new Invite();
+  }
+
+  addGuest() {
+    this.invite.guests.push(new Guest());
+  }
+
+  save() {
+    this.http.post('http://localhost:5000/api/invite', this.invite).subscribe(response => {
+      const result = response;
     }, error => console.error(error));
   }
 }

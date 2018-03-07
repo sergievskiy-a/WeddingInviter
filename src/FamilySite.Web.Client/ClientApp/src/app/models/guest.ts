@@ -1,4 +1,4 @@
-export interface Guest {
+export class Guest {
     id: number;
     firstName: string;
     lastName: string;

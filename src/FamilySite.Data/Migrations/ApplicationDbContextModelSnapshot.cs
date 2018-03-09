@@ -71,6 +71,32 @@ namespace FamilySite.Data.Migrations
                     b.ToTable("AspNetUsers");
                 });
 
+            modelBuilder.Entity("FamilySite.Data.Entites.Event", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Code");
+
+                    b.Property<DateTime>("DateTime");
+
+                    b.Property<string>("Description");
+
+                    b.Property<int?>("LocationId");
+
+                    b.Property<string>("Title");
+
+                    b.Property<int>("WeddingId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("LocationId");
+
+                    b.HasIndex("WeddingId");
+
+                    b.ToTable("Events");
+                });
+
             modelBuilder.Entity("FamilySite.Data.Entites.Guest", b =>
                 {
                     b.Property<int>("Id")
@@ -102,25 +128,47 @@ namespace FamilySite.Data.Migrations
 
                     b.Property<string>("Description");
 
+                    b.Property<int>("WeddingId");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("WeddingId");
 
                     b.ToTable("Invites");
                 });
 
-            modelBuilder.Entity("FamilySite.Data.Entites.SimpleValue", b =>
+            modelBuilder.Entity("FamilySite.Data.Entites.Location", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
+                    b.Property<string>("Address");
+
+                    b.Property<string>("City");
+
                     b.Property<string>("Code");
+
+                    b.Property<string>("GoogleMapPlaceId");
 
                     b.Property<string>("Title");
 
-                    b.Property<string>("Value");
+                    b.HasKey("Id");
+
+                    b.ToTable("Locations");
+                });
+
+            modelBuilder.Entity("FamilySite.Data.Entites.Wedding", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Hashtag");
+
+                    b.Property<string>("Title");
 
                     b.HasKey("Id");
 
-                    b.ToTable("SimpleValues");
+                    b.ToTable("Weddings");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -231,11 +279,31 @@ namespace FamilySite.Data.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
+            modelBuilder.Entity("FamilySite.Data.Entites.Event", b =>
+                {
+                    b.HasOne("FamilySite.Data.Entites.Location", "Location")
+                        .WithMany()
+                        .HasForeignKey("LocationId");
+
+                    b.HasOne("FamilySite.Data.Entites.Wedding", "Wedding")
+                        .WithMany("Events")
+                        .HasForeignKey("WeddingId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
             modelBuilder.Entity("FamilySite.Data.Entites.Guest", b =>
                 {
                     b.HasOne("FamilySite.Data.Entites.Invite", "Invite")
                         .WithMany("Guests")
                         .HasForeignKey("InviteId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("FamilySite.Data.Entites.Invite", b =>
+                {
+                    b.HasOne("FamilySite.Data.Entites.Wedding", "Wedding")
+                        .WithMany("Invites")
+                        .HasForeignKey("WeddingId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 

@@ -5,6 +5,10 @@
     <UserSecretsId>aspnet-FamilySite.Web.Api-936AEEC5-2BF8-4FD9-A6C5-F0FFE49A08F6</UserSecretsId>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Remove="Controllers\EventsApiController.cs" />
+  </ItemGroup>
+
 
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="6.2.2" />

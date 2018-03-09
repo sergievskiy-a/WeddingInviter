@@ -5,6 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Event\GetEventDto.cs" />
     <Compile Remove="Invite\UpdateInviteViewModel.cs" />
   </ItemGroup>
 

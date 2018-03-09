@@ -1,5 +1,3 @@
-using System;
-
 namespace FamilySite.Web.Api.Models
 {
     public class ErrorViewModel

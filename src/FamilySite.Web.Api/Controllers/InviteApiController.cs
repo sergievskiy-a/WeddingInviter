@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace FamilySite.Web.Api.Controllers
 {
-    [Route("api/invite")]
+    [Route("api/invites")]
     public class InviteApiController : Controller
     {
         private readonly IInviteService inviteService;

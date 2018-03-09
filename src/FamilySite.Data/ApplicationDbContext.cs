@@ -19,8 +19,10 @@ namespace FamilySite.Data
             // Add your customizations after calling base.OnModelCreating(builder);
         }
 
-        public DbSet<Guest> Guests { get; set; }
+        public DbSet<Wedding> Weddings { get; set; }
         public DbSet<Invite> Invites { get; set; }
-        public DbSet<SimpleValue> SimpleValues { get; set; }
+        public DbSet<Guest> Guests { get; set; }
+        public DbSet<Event> Events { get; set; }
+        public DbSet<Location> Locations { get; set; }
     }
 }

@@ -1,0 +1,37 @@
+<p *ngIf="!event">
+  <em>Loading...</em>
+</p>
+<div *ngIf="event">
+  <div *ngIf="!editMode">
+      <h3>{{ event.title }}</h3>
+      <p> <b>Title:</b> {{ event.title }} </p>
+      <p> <b>Code:</b> {{ event.code }} </p>
+      <p> <b>Date and Time:</b> {{ event.dateTime | date: 'EEEE d MMMM y року' }} </p>
+    
+      <div *ngIf="event.location">
+          <h4>Location:</h4>
+          <p> <b>Title:</b> {{ event.location.title }} </p>
+          <p> <b>Code:</b> {{ event.location.code }} </p>
+          <p> <b>Google Map place Id:</b> {{ event.location.googleMapPlaceId }} </p>
+      </div>
+    
+      <button (click)="edit()">Edit</button>
+  </div>
+
+  <div *ngIf="editMode">
+      <h3>{{ backupEvent.title }}</h3>
+      <p> <input type="text" placeholder="Title" [(ngModel)]="event.title" /> </p>
+      <p> <input type="text" placeholder="Code" [(ngModel)]="event.code" /> </p>
+      <p> <input type="text" placeholder="Date" [(ngModel)]="event.dateTime" /> </p>
+    
+      <div *ngIf="event.location">
+          <h4>Location:</h4>
+          <p> <input type="text" placeholder="Title" [(ngModel)]="event.location.title" /> </p>
+          <p> <input type="text" placeholder="Code" [(ngModel)]="event.location.code" /> </p>
+          <p> <input type="text" placeholder="Google Map place Id" [(ngModel)]="event.googleMapPlaceId" /> </p>
+      </div>
+    
+      <button (click)="save()">Save</button> <button (click)="cancel()">Cancel</button>
+  </div>
+  <hr>
+</div>

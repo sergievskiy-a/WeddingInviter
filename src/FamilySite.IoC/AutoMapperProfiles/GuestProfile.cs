@@ -1,5 +1,4 @@
-﻿using System;
-using AutoMapper;
+﻿using AutoMapper;
 using FamilySite.Data.Entites;
 using FamilySite.Dtos.Guest;
 using FamilySite.Models;
@@ -11,8 +10,6 @@ namespace FamilySite.IoC.AutoMapperProfiles
         public GuestProfile()
         {
             // Get
-            CreateMap<GuestModel, Guest>();
-
             CreateMap<Guest, BaseGuestDto>()
                 .Include<Guest, GetGuestDto>();
 
@@ -22,6 +19,8 @@ namespace FamilySite.IoC.AutoMapperProfiles
             CreateMap<BaseGuestDto, GuestModel>()
                 .ForMember(x => x.Id, opt => opt.Ignore())
                 .ForMember(x => x.InviteId, opt => opt.Ignore());
+
+            CreateMap<GuestModel, Guest>();
 
             //Update
             CreateMap<UpdateGuestDto, GuestModel>()

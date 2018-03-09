@@ -37,12 +37,13 @@ namespace FamilySite.Web.Api
             services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
-            
+
             // Add application services.
-            services.AddTransient<IEmailSender, EmailSender>();
             services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
 
-            services.AddTransient<ISimpleValueService, SimpleValueService>();
+            services.AddTransient<IEmailSender, EmailSender>();
+            services.AddTransient<IEventService, EventService>();
+            services.AddTransient<IWeddingService, WeddingService>();
             services.AddTransient<IInviteService, InviteService>();
             services.AddTransient<IGuestService, GuestService>();
 

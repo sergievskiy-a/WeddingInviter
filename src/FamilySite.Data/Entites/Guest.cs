@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace FamilySite.Data.Entites
+﻿namespace FamilySite.Data.Entites
 {
     public class Guest
     {

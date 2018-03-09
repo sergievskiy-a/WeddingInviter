@@ -6,18 +6,22 @@ using FamilySite.Data.Contracts.Repositories;
 using FamilySite.Data.Entites;
 using FamilySite.Models;
 using FamilySite.Services.Contracts;
+using Microsoft.EntityFrameworkCore;
 
 namespace FamilySite.Services
 {
     public class InviteService : IInviteService
     {
+        private readonly IWeddingService weddingService;
         private readonly IGenericRepository<Invite> inviteRepository;
         private readonly IMapper mapper;
 
         public InviteService(
+            IWeddingService weddingService,
             IGenericRepository<Invite> inviteRepository,
             IMapper mapper)
         {
+            this.weddingService = weddingService;
             this.inviteRepository = inviteRepository;
             this.mapper = mapper;
         }
@@ -26,6 +30,7 @@ namespace FamilySite.Services
         {
             var invite = this.inviteRepository
                 .GetMany(x => x.Id == id)
+                .AsNoTracking()
                 .ProjectTo<TResult>(this.mapper.ConfigurationProvider).FirstOrDefault();
 
             if (invite == null) throw new Exception("Not found");
@@ -37,6 +42,7 @@ namespace FamilySite.Services
         {
             var invite = this.inviteRepository
                 .GetMany(x => x.Alias.ToLower() == alias.ToLower())
+                .AsNoTracking()
                 .ProjectTo<TResult>(this.mapper.ConfigurationProvider).FirstOrDefault();
 
             if (invite == null) throw new Exception("Not found");
@@ -48,7 +54,9 @@ namespace FamilySite.Services
         {
             var inviteEntity = this.mapper.Map<Invite>(model);
 
-            if (this.inviteRepository.GetMany(x => x.Alias == model.Alias).Any())
+            inviteEntity.WeddingId = this.weddingService.GetWeddingId();
+
+            if (this.inviteRepository.GetMany(x => x.Alias.ToLower() == model.Alias.ToLower()).Any())
                 throw new Exception("The invite with this alias already existed");
 
             this.inviteRepository.Add(inviteEntity);

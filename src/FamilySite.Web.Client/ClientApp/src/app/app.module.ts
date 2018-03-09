@@ -11,9 +11,8 @@ import { CounterComponent } from './components/counter/counter.component';
 import { FetchDataComponent } from './components/fetch-data/fetch-data.component';
 import { CreateInviteComponent } from './components/invites/create-invite/create-invite.component';
 import { GetInviteComponent } from './components/invites/get-invite/get-invite.component';
-import { AddConfigComponent } from './components/config/add-config/add-config.component';
-import { GetConfigComponent } from './components/config/get-config/get-config.component';
-import { ListConfigComponent } from './components/config/list-config/list-config.component';
+import { ConfigWeddingComponent } from './components/wedding/config-wedding/config-wedding.component';
+import { EditEventComponent } from './components/event/edit-event/edit-event.component';
 
 @NgModule({
   declarations: [
@@ -24,9 +23,8 @@ import { ListConfigComponent } from './components/config/list-config/list-config
     FetchDataComponent,
     CreateInviteComponent,
     GetInviteComponent,
-    AddConfigComponent,
-    GetConfigComponent,
-    ListConfigComponent
+    ConfigWeddingComponent,
+    EditEventComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -36,8 +34,7 @@ import { ListConfigComponent } from './components/config/list-config/list-config
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'i/:alias', component: GetInviteComponent },
       { path: 'invite/create', component: CreateInviteComponent},
-      { path: 'configs', component: ListConfigComponent },
-      { path: 'counter', component: CounterComponent },
+      { path: 'wedding', component: ConfigWeddingComponent },
       { path: 'fetch-data', component: FetchDataComponent },
     ])
   ],

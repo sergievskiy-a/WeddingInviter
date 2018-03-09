@@ -1,0 +1,11 @@
+<h1>Invite</h1>
+<p *ngIf="!configValue">
+  <em>Loading...</em>
+</p>
+<div *ngIf="configValue">
+  <h3>Invite:</h3>
+  <p> <input type="text" placeholder="Alias" [(ngModel)]="configValue.alias" /> </p>
+  <p> <input type="text" placeholder="Message" [(ngModel)]="configValue.description" /> </p>
+  <p> <input type="text" placeholder="Message" [(ngModel)]="configValue.description" /> </p>
+  <button (click)="save()">Save</button>
+</div>

@@ -42,6 +42,7 @@ namespace FamilySite.Web.Api
             services.AddTransient<IEmailSender, EmailSender>();
             services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
 
+            services.AddTransient<ISimpleValueService, SimpleValueService>();
             services.AddTransient<IInviteService, InviteService>();
             services.AddTransient<IGuestService, GuestService>();
 

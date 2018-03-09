@@ -1,8 +1,8 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import { HttpClient } from '@angular/common/http';
-import { Invite } from '../../models/invite';
-import { Guest } from '../../models/guest';
+import { Invite } from '../../../models/invite';
+import { Guest } from '../../../models/guest';
 
 @Component({
   selector: 'app-get-invite',

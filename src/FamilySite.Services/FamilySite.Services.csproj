@@ -11,6 +11,7 @@
   <ItemGroup>
     <ProjectReference Include="..\FamilySite.Data.Contracts\FamilySite.Data.Contracts.csproj" />
     <ProjectReference Include="..\FamilySite.Data\FamilySite.Data.csproj" />
+    <ProjectReference Include="..\FamilySite.Dtos\FamilySite.Dtos.csproj" />
     <ProjectReference Include="..\FamilySite.Models\FamilySite.Models.csproj" />
     <ProjectReference Include="..\FamilySite.Services.Contracts\FamilySite.Services.Contracts.csproj" />
   </ItemGroup>

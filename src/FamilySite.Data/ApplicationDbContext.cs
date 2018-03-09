@@ -21,5 +21,6 @@ namespace FamilySite.Data
 
         public DbSet<Guest> Guests { get; set; }
         public DbSet<Invite> Invites { get; set; }
+        public DbSet<SimpleValue> SimpleValues { get; set; }
     }
 }

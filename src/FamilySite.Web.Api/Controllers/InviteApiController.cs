@@ -50,38 +50,13 @@ namespace FamilySite.Web.Api.Controllers
             this.inviteService.UpdateInvite(model);
 
             var result = this.inviteService.GetInvite<GetInviteDto>(id);
-            return Ok(new GetInviteDto
-            {
-                Id = id,
-                Alias = dto.Alias,
-                Description = dto.Description,
-                Guests = new List<GetGuestDto>
-                {
-                    new GetGuestDto
-                    {
-                        Id = 1,
-                        FirstName = "Ruslan",
-                        LastName = "Kulyk",
-                        FromGroom = true,
-                        PhoneNumber = "093 888 89 99"
-                    },
-                    new GetGuestDto
-                    {
-                        Id = 2,
-                        FirstName = "Natasha",
-                        LastName = "Kulyk",
-                        FromGroom = true,
-                        PhoneNumber = "093 777 77 99"
-                    }
-                }
-            });
+            return Ok(result);
         }
 
         [HttpDelete("{id}"), Authorize]
         public IActionResult Delete(int id)
         {
             this.inviteService.DeleteInvite(id);
-            var result = this.inviteService.GetInvite<GetInviteDto>(id);
 
             return NoContent();
         }

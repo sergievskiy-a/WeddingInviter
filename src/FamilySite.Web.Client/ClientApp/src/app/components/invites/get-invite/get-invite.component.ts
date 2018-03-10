@@ -23,7 +23,7 @@ export class GetInviteComponent implements OnInit {
        this.alias = params['alias'];
     });
 
-    this.http.get<Invite>('http://localhost:5000/api/invite/' + this.alias).subscribe(result => {
+    this.http.get<Invite>('http://localhost:5000/api/invites/' + this.alias).subscribe(result => {
       this.invite = result;
       this.setGreeting(this.invite.guests);
     }, error => console.error(error));

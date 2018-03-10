@@ -1,6 +1,7 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Output, Input } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Event } from '../../../models/event';
+import { Location } from '../../../models/location';
 import { DateTimeFormatter } from '../../../helpers/datetime-formatter';
 
 @Component({
@@ -11,6 +12,7 @@ import { DateTimeFormatter } from '../../../helpers/datetime-formatter';
 export class EditEventComponent {
 
   @Input() event: Event;
+  @Output() eventDeleted = new EventEmitter<number>();
   public backupEvent: Event;
   public editMode: boolean;
 
@@ -31,16 +33,38 @@ export class EditEventComponent {
     this.editMode = false;
   }
 
+  addLocation() {
+    this.event.location = new Location();
+  }
+
+  removeLocation() {
+    this.event.locationId = undefined;
+    this.event.location = undefined;
+  }
+
   save() {
-    this.http.put('http://localhost:5000/api/events', this.event, { withCredentials: true }).subscribe(response => {
-      const event = response;
-      this.editMode = false;
-    }, error => console.error(error));
+    if (this.event.id) {
+      this.http.put('http://localhost:5000/api/events', this.event, { withCredentials: true }).subscribe(response => {
+        const event = response;
+        this.editMode = false;
+      }, error => console.error(error));
+    } else {
+      this.http.post('http://localhost:5000/api/events', this.event, { withCredentials: true }).subscribe(response => {
+        const event = response;
+        this.editMode = false;
+      }, error => console.error(error));
+    }
   }
 
   delete() {
-    this.http.delete('http://localhost:5000/api/events/', { withCredentials: true }).subscribe(response => {
-      const result = response;
-    }, error => console.error(error));
+    if (this.event.id) {
+      this.http.delete('http://localhost:5000/api/events/' + this.event.id, { withCredentials: true }).subscribe(response => {
+        const result = response;
+        this.eventDeleted.emit(this.event.id);
+      }, error => console.error(error));
+    } else {
+      this.event.id = -1;
+      this.eventDeleted.emit(this.event.id);
+    }
   }
 }

@@ -50,10 +50,8 @@ namespace FamilySite.Services
 
         public ICollection<TResult> GetEvents<TResult>()
         {
-            var weddingId = this.weddingService.GetWeddingId();
-
             var result = this.eventRepository
-                .GetMany(x => x.WeddingId == weddingId)
+                .GetMany()
                 .ProjectTo<TResult>(this.mapper.ConfigurationProvider)
                 .ToList();
 

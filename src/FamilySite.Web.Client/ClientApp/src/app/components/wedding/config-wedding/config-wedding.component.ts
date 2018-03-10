@@ -11,7 +11,6 @@ import { HttpClient } from '@angular/common/http';
 export class ConfigWeddingComponent implements OnInit {
 
   public wedding: WeddingInfo;
-  public events: Event[];
 
   constructor(private http: HttpClient) {
   }
@@ -20,10 +19,14 @@ export class ConfigWeddingComponent implements OnInit {
     this.http.get<WeddingInfo>('http://localhost:5000/api/wedding/info').subscribe(result => {
       this.wedding = result;
     }, error => console.error(error));
+  }
 
-    this.http.get<Event[]>('http://localhost:5000/api/events/all').subscribe(result => {
-      this.events = result;
-    }, error => console.error(error));
+  addEvent() {
+    this.wedding.events.push(new Event());
+  }
+
+  eventDeleted(eventId: number) {
+    this.wedding.events = this.wedding.events.filter(item => item.id !== eventId);
   }
 
   save() {

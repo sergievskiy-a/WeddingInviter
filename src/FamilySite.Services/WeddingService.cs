@@ -49,8 +49,9 @@ namespace FamilySite.Services
 
         public TResult CreateOrUpdate<TResult>(WeddingModel model)
         {
-            return weddingRepository.GetMany().Any()
-                ? Update<TResult>(model)
+            var exist = weddingRepository.GetMany().Any();
+            var aa = weddingRepository.GetMany().FirstOrDefault();
+            return exist ? Update<TResult>(model)
                 : this.mapper.Map<TResult>(Create(model));
         }
 

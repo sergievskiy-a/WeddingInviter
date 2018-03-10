@@ -32,9 +32,9 @@ import { EditEventComponent } from './components/event/edit-event/edit-event.com
     FormsModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
-      { path: 'i/:alias', component: GetInviteComponent },
       { path: 'invite/create', component: CreateInviteComponent},
       { path: 'wedding', component: ConfigWeddingComponent },
+      { path: ':alias', component: GetInviteComponent },
       { path: 'fetch-data', component: FetchDataComponent },
     ])
   ],

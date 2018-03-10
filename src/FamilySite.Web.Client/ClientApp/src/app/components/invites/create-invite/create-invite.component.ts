@@ -20,7 +20,7 @@ export class CreateInviteComponent {
   }
 
   save() {
-    this.http.post('http://localhost:5000/api/invite', this.invite, { withCredentials: true }).subscribe(response => {
+    this.http.post('http://localhost:5000/api/invites', this.invite, { withCredentials: true }).subscribe(response => {
       const result = response;
     }, error => console.error(error));
   }

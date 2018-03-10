@@ -28,7 +28,7 @@ namespace FamilySite.Web.Api.Controllers
         }
 
         [HttpPost, Authorize]
-        public IActionResult Create([FromBody] CreateEventDto dto)
+        public IActionResult Create([FromBody] BaseEventDto dto)
         {
             var model = this.mapper.Map<EventModel>(dto);
             var eventId = this.eventService.AddEvent(model);

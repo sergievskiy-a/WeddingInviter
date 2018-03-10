@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FamilySite.Dtos.Location;
+using System;
 
 namespace FamilySite.Dtos.Event
 {
@@ -11,5 +12,7 @@ namespace FamilySite.Dtos.Event
         public string Description { get; set; }
         public DateTime DateTime { get; set; }
         public int? LocationId { get; set; }
+
+        public LocationDto Location { get; set; }
     }
 }

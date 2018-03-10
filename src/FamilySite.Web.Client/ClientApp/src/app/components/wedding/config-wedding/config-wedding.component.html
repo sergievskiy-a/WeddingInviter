@@ -1,17 +1,17 @@
-<h1>Wedding</h1>
+<h1>Wedding configuration</h1>
 <p *ngIf="!wedding">
   <em>Loading...</em>
 </p>
 <div *ngIf="wedding">
-  <h2>Wedding configuration:</h2>
   <p> <input type="text" placeholder="Title" [(ngModel)]="wedding.title" /> </p>
   <p> <input type="text" placeholder="Hashtag" [(ngModel)]="wedding.hashtag" /> </p>
+  <button (click)="save()">Save</button>
 
   <h2 *ngIf="events">Events:</h2>
 
-  <div *ngFor="let event of events; let i = index">
-    <app-edit-event [event]="event"></app-edit-event>
+  <div *ngFor="let event of wedding.events; let i = index">
+    <app-edit-event [event]="event" (eventDeleted)="eventDeleted($event)"></app-edit-event>
   </div>
 
-  <button (click)="save()">Save</button>
+  <button (click)="addEvent()">Add event</button>
 </div>

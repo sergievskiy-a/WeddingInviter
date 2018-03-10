@@ -17,10 +17,7 @@ namespace FamilySite.IoC.AutoMapperProfiles
 
             //Create
             CreateMap<BaseEventDto, EventModel>()
-                .ForMember(x => x.Id, opt => opt.Ignore())
-                .Include<CreateEventDto, EventModel>();
-
-            CreateMap<CreateEventDto, EventModel>();
+                .ForMember(x => x.Id, opt => opt.Ignore());
 
             CreateMap<EventModel, Event>()
                 .ForMember(dest => dest.WeddingId, opt => opt.Ignore());

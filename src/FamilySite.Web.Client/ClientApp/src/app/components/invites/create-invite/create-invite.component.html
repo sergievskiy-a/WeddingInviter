@@ -5,7 +5,9 @@
 <div *ngIf="invite">
   <h3>Invite:</h3>
   <p> <input type="text" placeholder="Alias" [(ngModel)]="invite.alias" /> </p>
-  <p> <input type="text" placeholder="Message" [(ngModel)]="invite.description" /> </p>
+  <p-editor [(ngModel)]="invite.description" [style]="{'height':'320px'}"></p-editor>
+
+  <p-dropdown [options]="events" [(ngModel)]="selectedEvent" placeholder="Select a event" optionLabel="title" ></p-dropdown>
 
   <div *ngFor="let guest of invite.guests; let i = index">
     <h3>{{ i + 1 }} guest:</h3>

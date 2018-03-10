@@ -1,18 +1,28 @@
-import { Component, Inject } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Invite } from '../../../models/invite';
+import { Event } from '../../../models/event';
 import { Guest } from '../../../models/guest';
+import { DropdownModule } from 'primeng/dropdown';
 
 @Component({
   selector: 'app-create-invite',
   templateUrl: './create-invite.component.html',
   styleUrls: ['./create-invite.component.css']
 })
-export class CreateInviteComponent {
+export class CreateInviteComponent implements OnInit {
   public invite: Invite;
+  public events: Event[];
+  public selectedEvent: Event;
 
   constructor(private http: HttpClient) {
     this.invite = new Invite();
+  }
+
+  ngOnInit() {
+    this.http.get<Event[]>('http://localhost:5000/api/events/all').subscribe(result => {
+      this.events = result;
+    }, error => console.error(error));
   }
 
   addGuest() {
@@ -20,6 +30,7 @@ export class CreateInviteComponent {
   }
 
   save() {
+    this.invite.eventId = this.selectedEvent.id;
     this.http.post('http://localhost:5000/api/invites', this.invite, { withCredentials: true }).subscribe(response => {
       const result = response;
     }, error => console.error(error));

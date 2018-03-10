@@ -1,43 +1,63 @@
 <p *ngIf="!event">
-  <em>Loading...</em>
+    <em>Loading...</em>
 </p>
 <div *ngIf="event">
-  <div *ngIf="!editMode">
-      <h3>{{ event.title }}</h3>
-      <p> <b>Title:</b> {{ event.title }} </p>
-      <p> <b>Date and Time:</b> {{ event.dateTime | date: 'EEEE d MMMM y року' }} </p>
-    
-      <div *ngIf="event.location">
-          <h4>Location:</h4>
-          <p *ngIf="event.location.title"> <b>Title:</b> {{ event.location.title }} </p>
-          <p *ngIf="event.location.city"> <b>City:</b> {{ event.location.city }} </p>
-          <p *ngIf="event.location.address"> <b>Address:</b> {{ event.location.address }} </p>
-          <p *ngIf="event.location.googleMapPlaceId"> <b>Google Map place Id:</b> {{ event.location.googleMapPlaceId }} </p>
-      </div>
-    
-      <button (click)="edit()">Edit</button> <button (click)="delete()">Remove event</button>
-  </div>
+    <div *ngIf="!editMode">
+        <h3>{{ event.title }}</h3>
+        <p>
+            <b>Title:</b> {{ event.title }} </p>
+        <p *ngIf="event.description">
+            <b>Description:</b> {{ event.description }} </p>
+        <p>
+            <b>Date and Time:</b> {{ event.dateTime | date: 'EEEE d MMMM y року' }} </p>
 
-  <div *ngIf="editMode">
-      <h3>{{ backupEvent.title }}</h3>
-      <p> <input type="text" placeholder="Title" [(ngModel)]="event.title" /> </p>
-      <p> <input type="text" placeholder="Code" [(ngModel)]="event.code" /> </p>
-      <p> <input type="text" placeholder="Date" [(ngModel)]="event.dateTime" /> </p>
-    
-      <div *ngIf="!event.location">
-            <button (click)="addLocation()">Add location</button>
-      </div>
-      <div *ngIf="event.location">
-          <h4>Location:</h4>
-          <p> <input type="text" placeholder="Title" [(ngModel)]="event.location.title" /> </p>
-          <p> <input type="text" placeholder="Code" [(ngModel)]="event.location.code" /> </p>
-          <p> <input type="text" placeholder="City" [(ngModel)]="event.location.city" /> </p>
-          <p> <input type="text" placeholder="Address" [(ngModel)]="event.location.address" /> </p>
-          <p> <input type="text" placeholder="Google Map place Id" [(ngModel)]="event.googleMapPlaceId" /> </p>
-          <button (click)="removeLocation()">Remove location</button>
-      </div>
-    
-      <button (click)="save()">Save</button> <button (click)="cancel()">Cancel</button>
-  </div>
-  <hr>
+        <div *ngIf="event.location">
+            <h4>Location:</h4>
+            <p *ngIf="event.location.title">
+                <b>Title:</b> {{ event.location.title }} </p>
+            <p *ngIf="event.location.city">
+                <b>City:</b> {{ event.location.city }} </p>
+            <p *ngIf="event.location.address">
+                <b>Address:</b> {{ event.location.address }} </p>
+            <p *ngIf="event.location.googleMapPlaceId">
+                <b>Google Map place Id:</b> {{ event.location.googleMapPlaceId }} </p>
+        </div>
+
+        <p-button (click)="edit()" label="Edit"></p-button>
+        <p-button (click)="delete()" label="Remove event"></p-button>
+    </div>
+
+    <div *ngIf="editMode">
+        <h3>{{ backupEvent.title }}</h3>
+        <p>
+            <input type="text" placeholder="Title" [(ngModel)]="event.title" /> </p>
+        <p>
+            <input type="text" placeholder="Code" [(ngModel)]="event.code" /> </p>
+        <p>
+            <input type="text" placeholder="Description" [(ngModel)]="event.description" /> </p>
+        <p>
+            <input type="text" placeholder="Date" [(ngModel)]="event.dateTime" /> </p>
+
+        <div *ngIf="!event.location">
+            <p-button (click)="addLocation()" label="Add location"></p-button>
+        </div>
+        <div *ngIf="event.location">
+            <h4>Location:</h4>
+            <p>
+                <input type="text" placeholder="Title" [(ngModel)]="event.location.title" /> </p>
+            <p>
+                <input type="text" placeholder="Code" [(ngModel)]="event.location.code" /> </p>
+            <p>
+                <input type="text" placeholder="City" [(ngModel)]="event.location.city" /> </p>
+            <p>
+                <input type="text" placeholder="Address" [(ngModel)]="event.location.address" /> </p>
+            <p>
+                <input type="text" placeholder="Google Map place Id" [(ngModel)]="event.googleMapPlaceId" /> </p>
+            <p-button (click)="removeLocation()" label="Remove location"></p-button>
+        </div>
+
+        <p-button (click)="save()" label="Save"></p-button>
+        <p-button (click)="cancel()" label="Cancel"></p-button>
+    </div>
+    <hr>
 </div>

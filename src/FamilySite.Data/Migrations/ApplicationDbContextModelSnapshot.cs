@@ -126,11 +126,17 @@ namespace FamilySite.Data.Migrations
 
                     b.Property<string>("Alias");
 
+                    b.Property<string>("CustomGreeting");
+
                     b.Property<string>("Description");
+
+                    b.Property<int?>("EventId");
 
                     b.Property<int>("WeddingId");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("EventId");
 
                     b.HasIndex("WeddingId");
 
@@ -301,6 +307,10 @@ namespace FamilySite.Data.Migrations
 
             modelBuilder.Entity("FamilySite.Data.Entites.Invite", b =>
                 {
+                    b.HasOne("FamilySite.Data.Entites.Event", "Event")
+                        .WithMany()
+                        .HasForeignKey("EventId");
+
                     b.HasOne("FamilySite.Data.Entites.Wedding", "Wedding")
                         .WithMany("Invites")
                         .HasForeignKey("WeddingId")

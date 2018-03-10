@@ -1,10 +1,11 @@
 ﻿using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using System;
+using System.Collections.Generic;
 
 namespace FamilySite.Data.Migrations
 {
-    public partial class InitialMigrations : Migration
+    public partial class inot : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -48,17 +49,34 @@ namespace FamilySite.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Invites",
+                name: "Locations",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Alias = table.Column<string>(nullable: true),
-                    Description = table.Column<string>(nullable: true)
+                    Address = table.Column<string>(nullable: true),
+                    City = table.Column<string>(nullable: true),
+                    Code = table.Column<string>(nullable: true),
+                    GoogleMapPlaceId = table.Column<string>(nullable: true),
+                    Title = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Invites", x => x.Id);
+                    table.PrimaryKey("PK_Locations", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Weddings",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Hashtag = table.Column<string>(nullable: true),
+                    Title = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Weddings", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -168,6 +186,65 @@ namespace FamilySite.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Events",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Code = table.Column<string>(nullable: true),
+                    DateTime = table.Column<DateTime>(nullable: false),
+                    Description = table.Column<string>(nullable: true),
+                    LocationId = table.Column<int>(nullable: true),
+                    Title = table.Column<string>(nullable: true),
+                    WeddingId = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Events", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Events_Locations_LocationId",
+                        column: x => x.LocationId,
+                        principalTable: "Locations",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Events_Weddings_WeddingId",
+                        column: x => x.WeddingId,
+                        principalTable: "Weddings",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Invites",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Alias = table.Column<string>(nullable: true),
+                    CustomGreeting = table.Column<string>(nullable: true),
+                    Description = table.Column<string>(nullable: true),
+                    EventId = table.Column<int>(nullable: true),
+                    WeddingId = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Invites", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Invites_Events_EventId",
+                        column: x => x.EventId,
+                        principalTable: "Events",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Invites_Weddings_WeddingId",
+                        column: x => x.WeddingId,
+                        principalTable: "Weddings",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Guests",
                 columns: table => new
                 {
@@ -230,9 +307,29 @@ namespace FamilySite.Data.Migrations
                 filter: "[NormalizedUserName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Events_LocationId",
+                table: "Events",
+                column: "LocationId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Events_WeddingId",
+                table: "Events",
+                column: "WeddingId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Guests_InviteId",
                 table: "Guests",
                 column: "InviteId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Invites_EventId",
+                table: "Invites",
+                column: "EventId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Invites_WeddingId",
+                table: "Invites",
+                column: "WeddingId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -263,6 +360,15 @@ namespace FamilySite.Data.Migrations
 
             migrationBuilder.DropTable(
                 name: "Invites");
+
+            migrationBuilder.DropTable(
+                name: "Events");
+
+            migrationBuilder.DropTable(
+                name: "Locations");
+
+            migrationBuilder.DropTable(
+                name: "Weddings");
         }
     }
 }

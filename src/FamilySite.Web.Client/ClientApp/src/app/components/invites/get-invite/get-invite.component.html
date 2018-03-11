@@ -4,5 +4,5 @@
 </p>
 <div *ngIf="invite">
   <p>{{ greeting }}</p>
-  <p>{{ invite.description }}</p>
+  <span [innerHTML]="invite.description"></span>
 </div>

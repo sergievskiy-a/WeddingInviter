@@ -1,22 +1,47 @@
-<h1>Invite</h1>
-<p *ngIf="!invite">
-  <em>Loading...</em>
-</p>
-<div *ngIf="invite">
-  <h3>Invite:</h3>
-  <p> <input type="text" placeholder="Alias" [(ngModel)]="invite.alias" /> </p>
-  <p-editor [(ngModel)]="invite.description" [style]="{'height':'320px'}"></p-editor>
-
-  <p-dropdown [options]="events" [(ngModel)]="selectedEvent" placeholder="Select a event" optionLabel="title" ></p-dropdown>
-
-  <div *ngFor="let guest of invite.guests; let i = index">
-    <h3>{{ i + 1 }} guest:</h3>
-    <p> <input type="text" placeholder="First name" [(ngModel)]="guest.firstName" /> </p>
-    <p> <input type="text" placeholder="Last name" [(ngModel)]="guest.lastName" /> </p>
-    <p> <input type="text" placeholder="Phone number" [(ngModel)]="guest.phoneNumber" /> </p>
-    <p> Is from groom?: <input type="checkbox" [(ngModel)]="guest.fromGroom" /> </p>
+<div class="content-section">
+  <h1 class="feature-title">Invite</h1>
+  <p *ngIf="!invite">
+    <em>Loading...</em>
+  </p>
+</div>
+<div class="content-section">
+  <div *ngIf="invite" class="ui-g">
+    <div class="ui-g-12 ui-md-4 ui-fluid">
+      <h2>General:</h2>
+      <h3>Alias:</h3>
+      <p>
+        <input type="text" pInputText placeholder="Alias" [(ngModel)]="invite.alias" /> </p>
+      <p-checkbox [(ngModel)]="invite.isCustomName" binary="true" label="Use custom greeting"></p-checkbox>
+      <ng-container *ngIf="invite.isCustomName">
+        <h3>Custom greeting:</h3>
+        <input type="text" pInputText placeholder="Custom greeting" [(ngModel)]="invite.customGreeting" />
+      </ng-container>
+      <h3>Event:</h3>
+      <p-listbox [options]="events" [(ngModel)]="selectedEvent" placeholder="Select a event" optionLabel="title"></p-listbox>
+    </div>
+    <div class="ui-g-12 ui-md-8 ui-fluid">
+      <h3>Text:</h3>
+      <p-editor [(ngModel)]="invite.description" [style]="{'height':'240px'}"></p-editor>
+    </div>
+    <div class="ui-g-12 ui-md-8 ui-fluid">
+      <h2>Guests:
+        <span *ngIf="invite.guests.length > 0">({{ invite.guests.length }})</span>
+      </h2>
+      <p *ngIf="invite.guests.length === 0">No guests. Add some...</p>
+      <div *ngFor="let guest of invite.guests; let i = index">
+        <p>
+          <input type="text" pInputText placeholder="First name" [(ngModel)]="guest.firstName" /> </p>
+        <p>
+          <input type="text" pInputText placeholder="Last name" [(ngModel)]="guest.lastName" /> </p>
+        <p>
+          <input type="text" pInputText placeholder="Phone number" [(ngModel)]="guest.phoneNumber" /> </p>
+        <p> Is from groom?:
+          <input type="checkbox" [(ngModel)]="guest.fromGroom" /> </p>
+      </div>
+    </div>
+    <div class="ui-g-12 ui-md-8">
+      <button pButton (click)="addGuest()" label="Add guest"></button>
+      <button pButton (click)="save()" label="Save"></button>
+    </div>
   </div>
-
-  <button (click)="addGuest()">Add guest</button>
-  <button (click)="save()">Save</button>
 </div>

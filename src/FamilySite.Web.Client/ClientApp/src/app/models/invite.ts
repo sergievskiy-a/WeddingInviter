@@ -7,4 +7,5 @@ export class Invite {
     customGreeting: string;
     description: string;
     guests: Guest[] = [];
+    isCustomName: boolean;
 }

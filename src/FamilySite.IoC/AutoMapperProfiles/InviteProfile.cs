@@ -14,7 +14,7 @@ namespace FamilySite.IoC.AutoMapperProfiles
                 .Include<Invite, GetInviteDto>();
 
             CreateMap<Invite, GetInviteDto>()
-                .ForMember(dest => dest.Answer, opt => opt.MapFrom(src => src.InviteAnswer));
+                .ForMember(dest => dest.InviteAnswer, opt => opt.MapFrom(src => src.InviteAnswer));
 
             CreateMap<InviteAnswer, InviteAnswerDto>();
 

@@ -10,5 +10,4 @@ export class Invite {
     suggestHotel: boolean;
     guests: Guest[] = [];
     inviteAnswer: InviteAnswer;
-    isCustomName: boolean;
 }

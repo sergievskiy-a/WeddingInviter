@@ -6,6 +6,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 
 import { DropdownModule } from 'primeng/primeng';
+import { InputTextareaModule } from 'primeng/inputtextarea';
 import { InputTextModule } from 'primeng/inputtext';
 import { EditorModule } from 'primeng/editor';
 import { ButtonModule } from 'primeng/button';
@@ -40,6 +41,7 @@ import { EditEventComponent } from './components/event/edit-event/edit-event.com
     HttpClientModule,
     FormsModule,
     DropdownModule,
+    InputTextareaModule,
     InputTextModule,
     EditorModule,
     ButtonModule,

@@ -3,6 +3,29 @@
   <em>Loading...</em>
 </p>
 <div *ngIf="invite">
-  <p>{{ greeting }}</p>
-  <span [innerHTML]="invite.description"></span>
+  <div>
+    <p>{{ greeting }}</p>
+    <span [innerHTML]="invite.description"></span>
+  </div>
+  <div *ngIf="showTwoButtons">
+    <h3>Чи зможете ви прийти і розділити нашу радісь?</h3>
+    <button pButton (click)="setGoing(true)" label="Так! :)"></button>
+    <button pButton (click)="setGoing(false)" label="На жаль, ні :("></button>
+  </div>
+  <div *ngIf="choosedGoing && !hasAnswer">
+    <p-checkbox *ngIf="invite.suggestHotel" [(ngModel)]="invite.inviteAnswer.needHotel" binary="true" label="Потрібне місце, де можна було б переночувати?"></p-checkbox>
+    <p>Можливо у вас є якісь побажання, уточнення чи запитання? Напишіть їх нижче.</p>
+    <textarea [rows]="5" [cols]="30" pInputTextarea autoResize="autoResize" ng-model="invite.inviteAnswer.comment"></textarea>
+    <button pButton (click)="save()" label="Зберегти"></button>
+  </div>
+  <div *ngIf="hasAnswer">
+    <div *ngIf="invite.inviteAnswer.going">
+      <p>Дякуємо за відповідь. Чекаємо з нетерпінням!</p>
+    </div>
+    <div *ngIf="!invite.inviteAnswer.going">
+      <p>Нам дуже шкода, що у вас не виходить. Якщо у вас зміняться плани - дайте нам знати. Ми будемо раді бачити вас на нашому
+        весіллі!
+      </p>
+    </div>
+  </div>
 </div>

@@ -16,6 +16,7 @@
         <h3>Custom greeting:</h3>
         <input type="text" pInputText placeholder="Custom greeting" [(ngModel)]="invite.customGreeting" />
       </ng-container>
+      <p-checkbox [(ngModel)]="invite.suggestHotel" binary="true" label="Suggest hotel?"></p-checkbox>
       <h3>Event:</h3>
       <p-listbox [options]="events" [(ngModel)]="selectedEvent" placeholder="Select a event" optionLabel="title"></p-listbox>
     </div>

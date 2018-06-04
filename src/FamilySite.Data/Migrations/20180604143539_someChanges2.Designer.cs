@@ -11,9 +11,10 @@ using System;
 namespace FamilySite.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20180604143539_someChanges2")]
+    partial class someChanges2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -131,6 +132,8 @@ namespace FamilySite.Data.Migrations
                     b.Property<string>("Description");
 
                     b.Property<int?>("EventId");
+
+                    b.Property<int?>("InviteAnswerId");
 
                     b.Property<bool>("SuggestHotel");
 

@@ -11,9 +11,10 @@ using System;
 namespace FamilySite.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20180604142236_someChanges")]
+    partial class someChanges
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -154,14 +155,15 @@ namespace FamilySite.Data.Migrations
 
                     b.Property<bool>("Going");
 
-                    b.Property<int>("InviteId");
+                    b.Property<int?>("InviteId");
 
                     b.Property<bool>("NeedHotel");
 
                     b.HasKey("Id");
 
                     b.HasIndex("InviteId")
-                        .IsUnique();
+                        .IsUnique()
+                        .HasFilter("[InviteId] IS NOT NULL");
 
                     b.ToTable("InviteAnswers");
                 });
@@ -344,8 +346,7 @@ namespace FamilySite.Data.Migrations
                 {
                     b.HasOne("FamilySite.Data.Entites.Invite", "Invite")
                         .WithOne("InviteAnswer")
-                        .HasForeignKey("FamilySite.Data.Entites.InviteAnswer", "InviteId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("FamilySite.Data.Entites.InviteAnswer", "InviteId");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

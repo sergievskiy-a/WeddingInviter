@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using AutoMapper;
 using AutoMapper.QueryableExtensions;
@@ -14,15 +15,18 @@ namespace FamilySite.Services
     {
         private readonly IWeddingService weddingService;
         private readonly IGenericRepository<Invite> inviteRepository;
+        private readonly IGenericRepository<InviteAnswer> answerRepository;
         private readonly IMapper mapper;
 
         public InviteService(
             IWeddingService weddingService,
             IGenericRepository<Invite> inviteRepository,
+            IGenericRepository<InviteAnswer> answerRepository,
             IMapper mapper)
         {
             this.weddingService = weddingService;
             this.inviteRepository = inviteRepository;
+            this.answerRepository = answerRepository;
             this.mapper = mapper;
         }
 
@@ -82,6 +86,17 @@ namespace FamilySite.Services
 
             this.inviteRepository.Delete(inviteEntity);
             this.inviteRepository.Save();
+        }
+
+        public void CreateInviteAnswer(InviteAnswerModel model)
+        {
+            var answeEntities = this.mapper.Map<InviteAnswer>(model);
+
+            if (this.answerRepository.GetMany(x => x.InviteId == answeEntities.InviteId).Any())
+                throw new Exception("The answer for this invite already existed");
+
+            this.answerRepository.Add(answeEntities);
+            this.answerRepository.Save();
         }
     }
 }

@@ -1,4 +1,5 @@
 import { Guest } from './guest';
+import { InviteAnswer } from './inviteAnswer';
 
 export class Invite {
     id: number;
@@ -6,6 +7,8 @@ export class Invite {
     eventId: number;
     customGreeting: string;
     description: string;
+    suggestHotel: boolean;
     guests: Guest[] = [];
+    inviteAnswer: InviteAnswer;
     isCustomName: boolean;
 }

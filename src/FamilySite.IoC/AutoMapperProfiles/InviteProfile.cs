@@ -13,7 +13,10 @@ namespace FamilySite.IoC.AutoMapperProfiles
             CreateMap<Invite, BaseInviteDto>()
                 .Include<Invite, GetInviteDto>();
 
-            CreateMap<Invite, GetInviteDto>();
+            CreateMap<Invite, GetInviteDto>()
+                .ForMember(dest => dest.Answer, opt => opt.MapFrom(src => src.InviteAnswer));
+
+            CreateMap<InviteAnswer, InviteAnswerDto>();
 
             //Create
             CreateMap<BaseInviteDto, InviteModel>()
@@ -24,6 +27,12 @@ namespace FamilySite.IoC.AutoMapperProfiles
 
             CreateMap<InviteModel, Invite>()
                 .ForMember(dest => dest.WeddingId, opt => opt.Ignore());
+
+            CreateMap<InviteAnswerDto, InviteAnswerModel>()
+                .ForMember(dest => dest.InviteId, opt => opt.Ignore());
+
+            CreateMap<InviteAnswerModel, InviteAnswer>()
+                .ForMember(src => src.Invite, opt => opt.Ignore());
 
             //Update
             CreateMap<UpdateInviteDto, InviteModel>();

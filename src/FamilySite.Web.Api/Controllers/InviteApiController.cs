@@ -53,6 +53,25 @@ namespace FamilySite.Web.Api.Controllers
             return Ok(result);
         }
 
+        [HttpPost("{alias}/answer")]
+        public IActionResult Update(string alias, [FromBody] InviteAnswerDto dtos)
+        {
+            var inviteDto = this.inviteService.GetInvite<GetInviteDto>(alias);
+
+            if (inviteDto == null)
+            {
+                return NotFound();
+            }
+
+            var model = this.mapper.Map<InviteAnswerModel>(dtos);
+            model.InviteId = inviteDto.Id;
+
+            this.inviteService.CreateInviteAnswer(model);
+            inviteDto = this.inviteService.GetInvite<GetInviteDto>(alias);
+
+            return Ok(inviteDto);
+        }
+
         [HttpDelete("{id}"), Authorize]
         public IActionResult Delete(int id)
         {

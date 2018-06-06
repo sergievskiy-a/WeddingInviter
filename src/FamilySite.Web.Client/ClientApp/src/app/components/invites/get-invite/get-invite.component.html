@@ -1,31 +1,66 @@
-<h1>Invite</h1>
-<p *ngIf="!invite">
-  <em>Loading...</em>
-</p>
-<div *ngIf="invite">
-  <div>
-    <p>{{ greeting }}</p>
-    <span [innerHTML]="invite.description"></span>
-  </div>
-  <div *ngIf="showTwoButtons">
-    <h3>Чи зможете ви прийти і розділити нашу радісь?</h3>
-    <button pButton (click)="setGoing(true)" label="Так! :)"></button>
-    <button pButton (click)="setGoing(false)" label="На жаль, ні :("></button>
-  </div>
-  <div *ngIf="choosedGoing && !hasAnswer">
-    <p-checkbox *ngIf="invite.suggestHotel" [(ngModel)]="invite.inviteAnswer.needHotel" binary="true" label="Потрібне місце, де можна було б переночувати?"></p-checkbox>
-    <p>Можливо у вас є якісь побажання, уточнення чи запитання? Напишіть їх нижче.</p>
-    <textarea [rows]="5" [cols]="30" pInputTextarea autoResize="autoResize" ng-model="invite.inviteAnswer.comment"></textarea>
-    <button pButton (click)="save()" label="Зберегти"></button>
-  </div>
-  <div *ngIf="hasAnswer">
-    <div *ngIf="invite.inviteAnswer.going">
-      <p>Дякуємо за відповідь. Чекаємо з нетерпінням!</p>
+<!-- start rsvp-section -->
+<section *ngIf="invite" class="rsvp-section section-padding parallax" data-bg-image="images/rsvp-bg.jpg" data-speed="7" id="rsvp">
+  <div class="container">
+    <div class="row">
+      <div class="col col-xs-12">
+        <div class="section-title-white">
+          <div class="vertical-line">
+            <span>
+              <i class="fi flaticon-two"></i>
+            </span>
+          </div>
+          <h2>Join our party</h2>
+        </div>
+      </div>
     </div>
-    <div *ngIf="!invite.inviteAnswer.going">
-      <p>Нам дуже шкода, що у вас не виходить. Якщо у вас зміняться плани - дайте нам знати. Ми будемо раді бачити вас на нашому
-        весіллі!
-      </p>
+    <!-- end section-title -->
+
+    <div class="row content">
+      <div class="col col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <form class="form validate-rsvp-form row">
+            <p>{{ greeting }}
+                <span [innerHTML]="invite.description"></span>
+            </p>
+        </form>
+        <form *ngIf="showTwoButtons" class="form validate-rsvp-form row">
+          <p>Чи зможете ви прийти та розділити нашу радісь?</p>
+          <div class="col col-sm-6 submit-btn">
+            <button (click)="setGoing(true)" class="submit btn-block">Так! 🍾
+              <i class="far fa-smile"></i>
+            </button>
+          </div>
+          <div class="col col-sm-6 submit-btn">
+            <button (click)="setGoing(true)" class="submit btn-block">На жаль, ні 😢
+            </button>
+          </div>
+        </form>
+        <form *ngIf="choosedGoing && !hasAnswer" id="rsvp-form" class="form validate-rsvp-form row">
+          <div *ngIf="invite.suggestHotel" class="col col-sm-12 checkbox">
+            <label>
+              <input name="mpf" type="checkbox" [(ngModel)]="invite.inviteAnswer.needHotel" /><span>Потрібне місце, де можна було б переночувати?</span></label>
+          </div>
+          <div class="col col-sm-12">
+            <span>Можливо у вас є якісь побажання, уточнення чи запитання? Напишіть їх нижче?.</span>
+            <textarea class="form-control" ng-model="invite.inviteAnswer.comment"></textarea>
+          </div>
+          <div class="col col-sm-12 submit-btn">
+            <button (click)="save()" class="submit">Зберегти відповідь</button>
+          </div>
+        </form>
+        <div class="col col-md-12 success-error-message" *ngIf="hasAnswer">
+          <div *ngIf="invite.inviteAnswer.going">
+            <p>Дякуємо за відповідь. Чекаємо з нетерпінням!</p>
+          </div>
+          <div *ngIf="!invite.inviteAnswer.going">
+            <p>Нам дуже шкода, що у вас не виходить. Якщо у вас зміняться плани - дайте нам знати. Ми будемо раді бачити вас
+              на нашому весіллі!
+            </p>
+          </div>
+        </div>
+      </div>
     </div>
+    <!-- end row -->
   </div>
-</div>
+  <!-- end container -->
+</section>
+<!-- end rsvp-section -->

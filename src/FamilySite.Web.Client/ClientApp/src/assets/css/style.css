@@ -45,6 +45,20 @@ body {
   overflow-x: hidden;
 }
 
+input[type='checkbox'] {
+  float: left;
+  height: 16px !important;
+  width: 20px;
+}
+input[type='checkbox'] + label {
+  display: block;
+  width: 30px;
+}
+
+body span {
+  color: #fff;
+}
+
 @media (max-width: 1199px) {
   body {
     font-size: 17px;

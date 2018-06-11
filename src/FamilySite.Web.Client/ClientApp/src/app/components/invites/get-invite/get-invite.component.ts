@@ -15,9 +15,8 @@ export class GetInviteComponent implements OnInit {
   public alias: string;
   public invite: Invite;
   public greeting: string;
-  public showTwoButtons: boolean;
-  public choosedGoing: boolean;
-  public hasAnswer: boolean;
+  public loading: boolean;
+  public step: number;
 
   constructor(private http: HttpClient, private route: ActivatedRoute) {
   }
@@ -29,10 +28,13 @@ export class GetInviteComponent implements OnInit {
 
     this.http.get<Invite>('http://localhost:5000/api/invites/' + this.alias).subscribe(result => {
       this.invite = result;
-      this.hasAnswer = this.invite.inviteAnswer && (this.invite.inviteAnswer.going === true || this.invite.inviteAnswer.going === false);
-      if (!this.hasAnswer) {
+
+      const hasAnswer = this.invite.inviteAnswer && (this.invite.inviteAnswer.going === true || this.invite.inviteAnswer.going === false);
+      if (hasAnswer) {
+        this.step = 3;
+      } else {
         this.invite.inviteAnswer = new InviteAnswer();
-        this.showTwoButtons = true;
+        this.step = 1;
       }
       this.setGreeting(this.invite.guests);
     }, error => console.error(error));
@@ -41,8 +43,7 @@ export class GetInviteComponent implements OnInit {
   setGreeting(guests: Guest[]) {
     if (this.invite.customGreeting) {
       this.greeting = this.invite.customGreeting;
-    }
-    else {
+    } else {
 
       this.greeting = 'Dear ';
 
@@ -60,22 +61,29 @@ export class GetInviteComponent implements OnInit {
   }
 
   setGoing(isGoing: boolean) {
-    this.showTwoButtons = false;
+    this.step = 2;
     this.invite.inviteAnswer.going = isGoing;
-    this.choosedGoing = isGoing;
 
     if (!isGoing) {
-      this.hasAnswer = true;
+      this.step = 4;
+      this.loading = true;
       this.http.post('http://localhost:5000/api/invites/' + this.alias + '/answer', this.invite.inviteAnswer).subscribe(response => {
         const result = response;
+        this.loading = false;
       }, error => console.error(error));
     }
   }
 
   save() {
-    this.hasAnswer = true;
-    this.http.post('http://localhost:5000/api/invites/' + this.alias + '/answer', this.invite.inviteAnswer).subscribe(response => {
+    this.loading = true;
+    this.http.post('http://localhost:5000/api/invites/' + this.alias + '/answer', this.invite.inviteAnswer)
+    .subscribe(response => {
       const result = response;
-    }, error => console.error(error));
+      this.step = 3;
+      this.loading = false;
+    }, error => {
+      this.step = -1;
+      console.error(error);
+    });
   }
 }

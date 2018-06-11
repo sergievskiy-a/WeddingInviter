@@ -1,48 +1,96 @@
-<div class="content-section">
-  <h1 class="feature-title">Invite</h1>
-  <p *ngIf="!invite">
-    <em>Loading...</em>
-  </p>
-</div>
-<div class="content-section">
-  <div *ngIf="invite" class="ui-g">
-    <div class="ui-g-12 ui-md-4 ui-fluid">
-      <h2>General:</h2>
-      <h3>Alias:</h3>
-      <p>
-        <input type="text" pInputText placeholder="Alias" [(ngModel)]="invite.alias" /> </p>
-      <p-checkbox [(ngModel)]="invite.isCustomName" binary="true" label="Use custom greeting"></p-checkbox>
-      <ng-container *ngIf="invite.isCustomName">
-        <h3>Custom greeting:</h3>
-        <input type="text" pInputText placeholder="Custom greeting" [(ngModel)]="invite.customGreeting" />
-      </ng-container>
-      <p-checkbox [(ngModel)]="invite.suggestHotel" binary="true" label="Suggest hotel?"></p-checkbox>
-      <h3>Event:</h3>
-      <p-listbox [options]="events" [(ngModel)]="selectedEvent" placeholder="Select a event" optionLabel="title"></p-listbox>
-    </div>
-    <div class="ui-g-12 ui-md-8 ui-fluid">
-      <h3>Text:</h3>
-      <p-editor [(ngModel)]="invite.description" [style]="{'height':'240px'}"></p-editor>
-    </div>
-    <div class="ui-g-12 ui-md-8 ui-fluid">
-      <h2>Guests:
-        <span *ngIf="invite.guests.length > 0">({{ invite.guests.length }})</span>
-      </h2>
-      <p *ngIf="invite.guests.length === 0">No guests. Add some...</p>
-      <div *ngFor="let guest of invite.guests; let i = index">
-        <p>
-          <input type="text" pInputText placeholder="First name" [(ngModel)]="guest.firstName" /> </p>
-        <p>
-          <input type="text" pInputText placeholder="Last name" [(ngModel)]="guest.lastName" /> </p>
-        <p>
-          <input type="text" pInputText placeholder="Phone number" [(ngModel)]="guest.phoneNumber" /> </p>
-        <p> Is from groom?:
-          <input type="checkbox" [(ngModel)]="guest.fromGroom" /> </p>
+<section class="wedding-couple-section section-padding">
+  <div class="container" style="background-color: #5e9a8e;">
+    <div class="row">
+      <div class="content-section">
+        <p *ngIf="!invite">
+          <em>Loading...</em>
+        </p>
+        <div *ngIf="invite">
+          <div class="col-sm-12">
+            <h1 class="feature-title">Invite</h1>
+            <form>
+
+              <div class="col-sm-12">
+                <span>Alias:</span>
+                <input type="text" class="form-control" id="alias" name="alias" placeholder="Alias" [(ngModel)]="invite.alias">
+              </div>
+
+              <div class="col-sm-12">
+                <span>Text:</span>
+                <textarea class="form-control" ng-model="invite.invite.description"></textarea>
+              </div>
+
+              <div class="col-sm-12">
+                <span>Event:</span>
+                <select [(ngModel)]="selectedEvent" [ngModelOptions]="{standalone: true}">
+                  <option *ngFor="let event of events" [ngValue]="event">{{event.title}}</option>
+                </select>
+              </div>
+
+
+              <div class="col-sm-12 checkbox">
+                <label>
+                  <input name="mpf" type="checkbox" [(ngModel)]="invite.isCustomName" />
+                  <span>Custom Name</span>
+                </label>
+              </div>
+
+              <div class="col-sm-12 checkbox">
+                <label>
+                  <input name="suggestHotel" type="checkbox" [(ngModel)]="invite.suggestHotel" />
+                  <span>Suggest Hotel</span>
+                </label>
+              </div>
+
+              <div class="col-sm-12 form-group" *ngIf="invite.isCustomName">
+                <label for="customGreeting">Alias:</label>
+                <input type="text" class="form-control" id="customGreeting" placeholder="Custom greeting" [(ngModel)]="invite.customGreeting">
+              </div>
+
+            </form>
+          </div>
+
+
+          <div class="col-sm-12">
+
+            <h2>Guests:
+              <span *ngIf="invite.guests.length > 0">({{ invite.guests.length }})</span>
+            </h2>
+            <p *ngIf="invite.guests.length == 0">No guests. Add some...</p>
+            <div *ngFor="let guest of invite.guests; let i = index">
+              <div class="col-sm-12 form-group">
+                <label for="firstName">First Name:</label>
+                <input type="text" class="form-control" id="firstName" placeholder="First Name" [(ngModel)]="guest.firstName">
+              </div>
+
+              <div class="col-sm-12 form-group">
+                <label for="lastName">First Name:</label>
+                <input type="text" class="form-control" id="lastName" placeholder="Last Name" [(ngModel)]="guest.lastName">
+              </div>
+
+              <div class="col-sm-12 form-group">
+                <label for="phoneNumber">Phone Number:</label>
+                <input type="text" class="form-control" id="phoneNumber" placeholder="Phone Number" [(ngModel)]="guest.phoneNumber">
+              </div>
+
+              <div class="col col-sm-12 checkbox">
+                <label>
+                  <input name="fromGroom" type="checkbox" [(ngModel)]="guest.fromGroom" />
+                  <span>Is from groom?</span>
+                </label>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-6 submit-btn btn-block">
+            <button (click)="addGuest()" class="submit">
+              Add guest</button>
+          </div>
+          <div class="col-sm-6 submit-btn btn-block">
+            <button (click)="save()" class="submit">
+              <span *ngIf="loading" class="glyphicon glyphicon-refresh glyphicon-refresh-animate"></span> Save</button>
+          </div>
+        </div>
       </div>
     </div>
-    <div class="ui-g-12 ui-md-8">
-      <button pButton (click)="addGuest()" label="Add guest"></button>
-      <button pButton (click)="save()" label="Save"></button>
-    </div>
   </div>
-</div>
+</section>

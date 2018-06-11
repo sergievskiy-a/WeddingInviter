@@ -18,45 +18,48 @@
     <div class="row content">
       <div class="col col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
         <form class="form validate-rsvp-form row">
+          <div *ngIf="step == 1" class="col-sm-12">
             <p>{{ greeting }}
-                <span [innerHTML]="invite.description"></span>
+              <span [innerHTML]="invite.description"></span>
             </p>
+            <p>Чи зможете ви прийти та розділити нашу радісь?</p>
+            <div class="col col-sm-6 submit-btn">
+              <button (click)="setGoing(true)" class="submit btn-block">Так! 🍾
+                <i class="far fa-smile"></i>
+              </button>
+            </div>
+            <div class="col col-sm-6 submit-btn">
+              <button (click)="setGoing(true)" class="submit btn-block">На жаль, ні 😢
+              </button>
+            </div>
+          </div>
+          <div *ngIf="step == 2">
+            <div *ngIf="invite.suggestHotel" class="col col-sm-12 checkbox">
+              <label>
+                <input name="mpf" type="checkbox" [(ngModel)]="invite.inviteAnswer.needHotel" />
+                <span>Потрібне місце, де можна було б переночувати?</span>
+              </label>
+            </div>
+            <div class="col col-sm-12">
+              <span>Можливо у вас є якісь побажання, уточнення чи запитання? Напишіть їх нижче?.</span>
+              <textarea class="form-control" ng-model="invite.inviteAnswer.comment"></textarea>
+            </div>
+            <div class="col col-sm-12 submit-btn">
+              <button (click)="save()" class="submit">
+                <span *ngIf="loading" class="glyphicon glyphicon-refresh glyphicon-refresh-animate"></span> Зберегти відповідь</button>
+            </div>
+          </div>
+          <div class="col col-md-12 success-error-message" *ngIf="step > 2">
+            <div *ngIf="invite.inviteAnswer.going">
+              <p>Дякуємо за відповідь. Чекаємо з нетерпінням!</p>
+            </div>
+            <div *ngIf="!invite.inviteAnswer.going">
+              <p>Нам дуже шкода, що у вас не виходить. Якщо у вас зміняться плани - дайте нам знати. Ми будемо раді бачити вас
+                на нашому весіллі!
+              </p>
+            </div>
+          </div>
         </form>
-        <form *ngIf="showTwoButtons" class="form validate-rsvp-form row">
-          <p>Чи зможете ви прийти та розділити нашу радісь?</p>
-          <div class="col col-sm-6 submit-btn">
-            <button (click)="setGoing(true)" class="submit btn-block">Так! 🍾
-              <i class="far fa-smile"></i>
-            </button>
-          </div>
-          <div class="col col-sm-6 submit-btn">
-            <button (click)="setGoing(true)" class="submit btn-block">На жаль, ні 😢
-            </button>
-          </div>
-        </form>
-        <form *ngIf="choosedGoing && !hasAnswer" id="rsvp-form" class="form validate-rsvp-form row">
-          <div *ngIf="invite.suggestHotel" class="col col-sm-12 checkbox">
-            <label>
-              <input name="mpf" type="checkbox" [(ngModel)]="invite.inviteAnswer.needHotel" /><span>Потрібне місце, де можна було б переночувати?</span></label>
-          </div>
-          <div class="col col-sm-12">
-            <span>Можливо у вас є якісь побажання, уточнення чи запитання? Напишіть їх нижче?.</span>
-            <textarea class="form-control" ng-model="invite.inviteAnswer.comment"></textarea>
-          </div>
-          <div class="col col-sm-12 submit-btn">
-            <button (click)="save()" class="submit">Зберегти відповідь</button>
-          </div>
-        </form>
-        <div class="col col-md-12 success-error-message" *ngIf="hasAnswer">
-          <div *ngIf="invite.inviteAnswer.going">
-            <p>Дякуємо за відповідь. Чекаємо з нетерпінням!</p>
-          </div>
-          <div *ngIf="!invite.inviteAnswer.going">
-            <p>Нам дуже шкода, що у вас не виходить. Якщо у вас зміняться плани - дайте нам знати. Ми будемо раді бачити вас
-              на нашому весіллі!
-            </p>
-          </div>
-        </div>
       </div>
     </div>
     <!-- end row -->

@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject, ViewEncapsulation } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { Invite } from '../../../models/invite';
@@ -8,7 +8,8 @@ import { InviteAnswer } from '../../../models/inviteAnswer';
 @Component({
   selector: 'app-get-invite',
   templateUrl: './get-invite.component.html',
-  styleUrls: ['./get-invite.component.css']
+  styleUrls: ['./get-invite.component.css'],
+  encapsulation: ViewEncapsulation.None
 })
 export class GetInviteComponent implements OnInit {
 
@@ -45,13 +46,13 @@ export class GetInviteComponent implements OnInit {
       this.greeting = this.invite.customGreeting;
     } else {
 
-      this.greeting = 'Dear ';
-
       if (guests.length === 1) {
         this.greeting = this.greeting + guests[0].firstName + '!';
       } else if (guests.length === 2) {
+        this.greeting = 'Дорогі ';
         this.greeting = this.greeting + guests[0].firstName + ' and ' + guests[1].firstName + '!';
       } else {
+        this.greeting = 'Дорогі ';
         for (let _i = 0; _i < guests.length - 1; _i++) {
           this.greeting = this.greeting + guests[_i].firstName + ', ';
         }

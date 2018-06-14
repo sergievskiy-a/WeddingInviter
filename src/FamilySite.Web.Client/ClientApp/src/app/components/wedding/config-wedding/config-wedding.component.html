@@ -16,7 +16,7 @@
     </span>
   </div>
 
-  <p-button (click)="save()" label="Save"></p-button>
+  <button (click)="save()" label="Save"></button>
 
   <h2 *ngIf="events">Events:</h2>
 
@@ -24,5 +24,5 @@
     <app-edit-event [event]="event" (eventDeleted)="eventDeleted($event)"></app-edit-event>
   </div>
 
-  <p-button (click)="addEvent()" label="Add event"></p-button>
+  <button (click)="addEvent()" label="Add event"></button>
 </div>

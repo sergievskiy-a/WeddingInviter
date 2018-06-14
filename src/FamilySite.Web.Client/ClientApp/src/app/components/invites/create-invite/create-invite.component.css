@@ -1,6 +1,3 @@
-::ng-deep html,
-::ng-deep body,
-::ng-deep body.span,
-::ng-deep body.p, {
-    color: gray !important;
-}
+::ng-deep body span {
+    color: black !important;
+  }

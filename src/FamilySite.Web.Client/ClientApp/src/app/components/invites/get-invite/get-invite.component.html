@@ -1,5 +1,5 @@
 <!-- start rsvp-section -->
-<section *ngIf="invite" class="rsvp-section section-padding parallax" data-bg-image="images/rsvp-bg.jpg" data-speed="7" id="rsvp">
+<section *ngIf="invite" class="rsvp-section section-padding">
   <div class="container">
     <div class="row">
       <div class="col col-xs-12">
@@ -9,7 +9,7 @@
               <i class="fi flaticon-two"></i>
             </span>
           </div>
-          <h2>Join our party</h2>
+          <h2>Запрошення на весілля</h2>
         </div>
       </div>
     </div>
@@ -18,19 +18,21 @@
     <div class="row content">
       <div class="col col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
         <form class="form validate-rsvp-form row">
-          <div *ngIf="step == 1" class="col-sm-12">
-            <p>{{ greeting }}
+          <div class="col-sm-12">
+            <p *ngIf="step == 1 || step > 2">{{ greeting }}
               <span [innerHTML]="invite.description"></span>
             </p>
-            <p>Чи зможете ви прийти та розділити нашу радісь?</p>
-            <div class="col col-sm-6 submit-btn">
-              <button (click)="setGoing(true)" class="submit btn-block">Так! 🍾
-                <i class="far fa-smile"></i>
-              </button>
-            </div>
-            <div class="col col-sm-6 submit-btn">
-              <button (click)="setGoing(true)" class="submit btn-block">На жаль, ні 😢
-              </button>
+            <div *ngIf="step == 1">
+              <p>Чи зможете ви прийти та розділити нашу радісь?</p>
+              <div class="col col-sm-6 submit-btn">
+                <button (click)="setGoing(true)" class="submit btn-block">Так! 🍾
+                  <i class="far fa-smile"></i>
+                </button>
+              </div>
+              <div class="col col-sm-6 submit-btn">
+                <button (click)="setGoing(true)" class="cancel btn-block">На жаль, ні 😢
+                </button>
+              </div>
             </div>
           </div>
           <div *ngIf="step == 2">
@@ -41,7 +43,7 @@
               </label>
             </div>
             <div class="col col-sm-12">
-              <span>Можливо у вас є якісь побажання, уточнення чи запитання? Напишіть їх нижче?.</span>
+              <span>Можливо у вас є якісь побажання, уточнення чи запитання? Напишіть їх нижче?</span>
               <textarea class="form-control" ng-model="invite.inviteAnswer.comment"></textarea>
             </div>
             <div class="col col-sm-12 submit-btn">
@@ -49,9 +51,11 @@
                 <span *ngIf="loading" class="glyphicon glyphicon-refresh glyphicon-refresh-animate"></span> Зберегти відповідь</button>
             </div>
           </div>
-          <div class="col col-md-12 success-error-message" *ngIf="step > 2">
+          <div class="col col-md-12 text-center" *ngIf="step > 2">
             <div *ngIf="invite.inviteAnswer.going">
-              <p>Дякуємо за відповідь. Чекаємо з нетерпінням!</p>
+              <p>Дякуємо за відповідь. Чекаємо з нетерпінням!
+                <br>Більш детальну інформацію про місце, дату, час, розклад - можете переглянути на нашому <a href="/">сайті</a>.
+              </p>
             </div>
             <div *ngIf="!invite.inviteAnswer.going">
               <p>Нам дуже шкода, що у вас не виходить. Якщо у вас зміняться плани - дайте нам знати. Ми будемо раді бачити вас

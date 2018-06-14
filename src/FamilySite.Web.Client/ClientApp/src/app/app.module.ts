@@ -5,13 +5,7 @@ import { FormsModule  } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 
-import { DropdownModule } from 'primeng/primeng';
-import { InputTextareaModule } from 'primeng/inputtextarea';
-import { InputTextModule } from 'primeng/inputtext';
-import { EditorModule } from 'primeng/editor';
-import { ButtonModule } from 'primeng/button';
-import { ListboxModule } from 'primeng/listbox';
-import { CheckboxModule } from 'primeng/checkbox';
+import { CKEditorModule } from 'ngx-ckeditor';
 
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './components/nav-menu/nav-menu.component';
@@ -40,13 +34,7 @@ import { EditEventComponent } from './components/event/edit-event/edit-event.com
     BrowserAnimationsModule,
     HttpClientModule,
     FormsModule,
-    DropdownModule,
-    InputTextareaModule,
-    InputTextModule,
-    EditorModule,
-    ButtonModule,
-    ListboxModule,
-    CheckboxModule,
+    CKEditorModule,
 
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },

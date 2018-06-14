@@ -1,5 +1,5 @@
 <section class="wedding-couple-section section-padding">
-  <div class="container" style="background-color: #5e9a8e;">
+  <div class="container">
     <div class="row">
       <div class="content-section">
         <p *ngIf="!invite">
@@ -14,10 +14,10 @@
                 <span>Alias:</span>
                 <input type="text" class="form-control" id="alias" name="alias" placeholder="Alias" [(ngModel)]="invite.alias">
               </div>
-
+              
               <div class="col-sm-12">
-                <span>Text:</span>
-                <textarea class="form-control" ng-model="invite.invite.description"></textarea>
+                <!-- <quill-editor [(ngModel)]="invite.description" ></quill-editor> -->
+                <ck-editor name="editor1" [(ngModel)]="invite.description" skin="moono-lisa" language="en" [fullPage]="true"></ck-editor>
               </div>
 
               <div class="col-sm-12">
@@ -35,16 +35,16 @@
                 </label>
               </div>
 
+              <div class="col-sm-12" *ngIf="invite.isCustomName">
+                <span>Alias:</span>
+                <input type="text" class="form-control" id="alias" name="alias" placeholder="Custom greeting" [(ngModel)]="invite.customGreeting">
+              </div>
+
               <div class="col-sm-12 checkbox">
                 <label>
                   <input name="suggestHotel" type="checkbox" [(ngModel)]="invite.suggestHotel" />
                   <span>Suggest Hotel</span>
                 </label>
-              </div>
-
-              <div class="col-sm-12 form-group" *ngIf="invite.isCustomName">
-                <label for="customGreeting">Alias:</label>
-                <input type="text" class="form-control" id="customGreeting" placeholder="Custom greeting" [(ngModel)]="invite.customGreeting">
               </div>
 
             </form>

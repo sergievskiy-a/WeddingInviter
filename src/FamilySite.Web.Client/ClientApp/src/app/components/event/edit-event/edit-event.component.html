@@ -23,8 +23,8 @@
                 <b>Google Map place Id:</b> {{ event.location.googleMapPlaceId }} </p>
         </div>
 
-        <p-button (click)="edit()" label="Edit"></p-button>
-        <p-button (click)="delete()" label="Remove event"></p-button>
+        <button (click)="edit()" label="Edit"></button>
+        <button (click)="delete()" label="Remove event"></button>
     </div>
 
     <div *ngIf="editMode">
@@ -39,7 +39,7 @@
             <input type="text" placeholder="Date" [(ngModel)]="event.dateTime" /> </p>
 
         <div *ngIf="!event.location">
-            <p-button (click)="addLocation()" label="Add location"></p-button>
+            <button (click)="addLocation()" label="Add location"></button>
         </div>
         <div *ngIf="event.location">
             <h4>Location:</h4>
@@ -53,11 +53,11 @@
                 <input type="text" placeholder="Address" [(ngModel)]="event.location.address" /> </p>
             <p>
                 <input type="text" placeholder="Google Map place Id" [(ngModel)]="event.googleMapPlaceId" /> </p>
-            <p-button (click)="removeLocation()" label="Remove location"></p-button>
+            <button (click)="removeLocation()" label="Remove location"></button>
         </div>
 
-        <p-button (click)="save()" label="Save"></p-button>
-        <p-button (click)="cancel()" label="Cancel"></p-button>
+        <button (click)="save()" label="Save"></button>
+        <button (click)="cancel()" label="Cancel"></button>
     </div>
     <hr>
 </div>

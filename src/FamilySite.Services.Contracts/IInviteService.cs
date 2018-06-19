@@ -14,6 +14,8 @@ namespace FamilySite.Services.Contracts
 
         void CreateInviteAnswer(InviteAnswerModel model);
 
+        void UpdateInviteAnswer(InviteAnswerModel model);
+
         void DeleteInvite(int id);
     }
 }

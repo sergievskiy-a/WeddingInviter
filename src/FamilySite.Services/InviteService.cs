@@ -93,9 +93,24 @@ namespace FamilySite.Services
             var answeEntities = this.mapper.Map<InviteAnswer>(model);
 
             if (this.answerRepository.GetMany(x => x.InviteId == answeEntities.InviteId).Any())
+            {
                 throw new Exception("The answer for this invite already existed");
+            }
 
             this.answerRepository.Add(answeEntities);
+            this.answerRepository.Save();
+        }
+
+        public void UpdateInviteAnswer(InviteAnswerModel model)
+        {
+            var answeEntity = this.answerRepository.GetSingle(x => x.InviteId == model.InviteId);
+            if (answeEntity == null)
+            {
+                throw new Exception("Not found");
+            }
+
+            this.mapper.Map(model, answeEntity);
+
             this.answerRepository.Save();
         }
     }

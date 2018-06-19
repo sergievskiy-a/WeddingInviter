@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { WeddingInfo } from '../../../models/weddingInfo';
 import { Event } from '../../../models/event';
 import { HttpClient } from '@angular/common/http';
+import { environment } from '../../../../environments/environment.dev';
 
 @Component({
   selector: 'app-config-wedding',
@@ -16,7 +17,7 @@ export class ConfigWeddingComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.http.get<WeddingInfo>('http://localhost:5000/api/wedding/info').subscribe(result => {
+    this.http.get<WeddingInfo>(environment.baseApiUrl + 'api/wedding/info').subscribe(result => {
       this.wedding = result;
     }, error => console.error(error));
   }
@@ -30,7 +31,7 @@ export class ConfigWeddingComponent implements OnInit {
   }
 
   save() {
-    this.http.put('http://localhost:5000/api/wedding', this.wedding, { withCredentials: true }).subscribe(response => {
+    this.http.put(environment.baseApiUrl + 'api/wedding', this.wedding, { withCredentials: true }).subscribe(response => {
       const wedding = response;
     }, error => console.error(error));
   }

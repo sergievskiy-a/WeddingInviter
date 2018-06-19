@@ -53,8 +53,8 @@ namespace FamilySite.Web.Api.Controllers
             return Ok(result);
         }
 
-        [HttpPost("{alias}/answer")]
-        public IActionResult Update(string alias, [FromBody] InviteAnswerDto dtos)
+        [HttpPut("{alias}/answer")]
+        public IActionResult UpsertAnswer(string alias, [FromBody] InviteAnswerDto dtos)
         {
             var inviteDto = this.inviteService.GetInvite<GetInviteDto>(alias);
 
@@ -66,7 +66,15 @@ namespace FamilySite.Web.Api.Controllers
             var model = this.mapper.Map<InviteAnswerModel>(dtos);
             model.InviteId = inviteDto.Id;
 
-            this.inviteService.CreateInviteAnswer(model);
+            if (inviteDto.InviteAnswer == null)
+            {
+                this.inviteService.CreateInviteAnswer(model);
+            }
+            else
+            {
+                this.inviteService.UpdateInviteAnswer(model);
+            }
+
             inviteDto = this.inviteService.GetInvite<GetInviteDto>(alias);
 
             return Ok(inviteDto);

@@ -15,6 +15,8 @@ using FamilySite.IoC.AutoMapperProfiles;
 using AutoMapper;
 using System.Reflection;
 
+using FamilySite.Web.Api.Config;
+
 namespace FamilySite.Web.Api
 {
     public class Startup
@@ -49,6 +51,16 @@ namespace FamilySite.Web.Api
 
             services.AddCors();
             services.AddMvc();
+
+            services.Configure<Settings>(options =>
+                {
+                    options.ConnectionString
+                        = Configuration.GetSection("ConnectionStrings:DefaultConnection").Value;
+                    options.ApiDomain
+                        = Configuration.GetSection("Domains:ApiDomain").Value;
+                    options.ClientDomain
+                        = Configuration.GetSection("Domains:ClientDomain").Value;
+                });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

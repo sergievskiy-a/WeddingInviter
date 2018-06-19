@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { Invite } from '../../../models/invite';
 import { Guest } from '../../../models/guest';
 import { InviteAnswer } from '../../../models/inviteAnswer';
+import { environment } from '../../../../environments/environment';
 
 @Component({
   selector: 'app-get-invite',
@@ -27,7 +28,7 @@ export class GetInviteComponent implements OnInit {
       this.alias = params['alias'];
     });
 
-    this.http.get<Invite>('http://localhost:5000/api/invites/' + this.alias).subscribe(result => {
+    this.http.get<Invite>(environment.baseApiUrl + 'api/invites/' + this.alias).subscribe(result => {
       this.invite = result;
 
       const hasAnswer = this.invite.inviteAnswer && (this.invite.inviteAnswer.going === true || this.invite.inviteAnswer.going === false);
@@ -68,7 +69,7 @@ export class GetInviteComponent implements OnInit {
     if (!isGoing) {
       this.step = 4;
       this.loading = true;
-      this.http.post('http://localhost:5000/api/invites/' + this.alias + '/answer', this.invite.inviteAnswer).subscribe(response => {
+      this.http.post(environment.baseApiUrl + 'api/invites/' + this.alias + '/answer', this.invite.inviteAnswer).subscribe(response => {
         const result = response;
         this.loading = false;
       }, error => console.error(error));
@@ -77,7 +78,7 @@ export class GetInviteComponent implements OnInit {
 
   save() {
     this.loading = true;
-    this.http.post('http://localhost:5000/api/invites/' + this.alias + '/answer', this.invite.inviteAnswer)
+    this.http.put(environment.baseApiUrl + 'api/invites/' + this.alias + '/answer', this.invite.inviteAnswer)
     .subscribe(response => {
       const result = response;
       this.step = 3;

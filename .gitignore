@@ -200,3 +200,5 @@ Thumbs.db
 [Tt]est[Rr]esult*
 #Nuget packages folder
 packages/
+/src/FamilySite.Web.Api/appsettings.Production.json
+/src/FamilySite.Web.Client/appsettings.Production.json

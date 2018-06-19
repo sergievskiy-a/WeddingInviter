@@ -2,7 +2,7 @@ import { Component, EventEmitter, Output, Input } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Event } from '../../../models/event';
 import { Location } from '../../../models/location';
-import { DateTimeFormatter } from '../../../helpers/datetime-formatter';
+import { environment } from '../../../../environments/environment.dev';
 
 @Component({
   selector: 'app-edit-event',
@@ -44,12 +44,12 @@ export class EditEventComponent {
 
   save() {
     if (this.event.id) {
-      this.http.put('http://localhost:5000/api/events', this.event, { withCredentials: true }).subscribe(response => {
+      this.http.put(environment.baseApiUrl + 'api/events', this.event, { withCredentials: true }).subscribe(response => {
         const event = response;
         this.editMode = false;
       }, error => console.error(error));
     } else {
-      this.http.post('http://localhost:5000/api/events', this.event, { withCredentials: true }).subscribe(response => {
+      this.http.post(environment.baseApiUrl + 'api/events', this.event, { withCredentials: true }).subscribe(response => {
         const event = response;
         this.editMode = false;
       }, error => console.error(error));
@@ -58,7 +58,7 @@ export class EditEventComponent {
 
   delete() {
     if (this.event.id) {
-      this.http.delete('http://localhost:5000/api/events/' + this.event.id, { withCredentials: true }).subscribe(response => {
+      this.http.delete(environment.baseApiUrl + 'api/events/' + this.event.id, { withCredentials: true }).subscribe(response => {
         const result = response;
         this.eventDeleted.emit(this.event.id);
       }, error => console.error(error));

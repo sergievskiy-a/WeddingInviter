@@ -44,7 +44,7 @@
             </div>
             <div class="col col-sm-12">
               <span>Можливо у вас є якісь побажання, уточнення чи запитання? Напишіть їх нижче?</span>
-              <textarea class="form-control" ng-model="invite.inviteAnswer.comment"></textarea>
+              <textarea class="form-control" name="comment" [(ngModel)]="invite.inviteAnswer.comment"></textarea>
             </div>
             <div class="col col-sm-12 submit-btn">
               <button (click)="save()" class="submit">
@@ -61,6 +61,9 @@
               <p>Нам дуже шкода, що у вас не виходить. Якщо у вас зміняться плани - дайте нам знати. Ми будемо раді бачити вас
                 на нашому весіллі!
               </p>
+            </div>
+            <div class="col col-sm-12 submit-btn">
+              <button (click)="step = 1" class="submit">Змінити рішення</button>
             </div>
           </div>
         </form>

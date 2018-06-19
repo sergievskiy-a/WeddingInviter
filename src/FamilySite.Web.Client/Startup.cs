@@ -1,8 +1,11 @@
+using FamilySite.Web.Client.Config;
+
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.SpaServices.AngularCli;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Options;
 
 namespace FamilySite.Web.Client
 {
@@ -21,6 +24,14 @@ namespace FamilySite.Web.Client
             services.AddCors();
             services.AddMvc();
 
+            services.Configure<Settings>(options =>
+                {
+                    options.ApiDomain
+                        = Configuration.GetSection("Domains:ApiDomain").Value;
+                    options.ClientDomain
+                        = Configuration.GetSection("Domains:ClientDomain").Value;
+                });
+
             // In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
             {
@@ -29,7 +40,7 @@ namespace FamilySite.Web.Client
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, IOptions<Settings> settings)
         {
             if (env.IsDevelopment())
             {
@@ -44,9 +55,8 @@ namespace FamilySite.Web.Client
             app.UseSpaStaticFiles();
 
             app.UseCors(builder =>
-                builder.WithOrigins("http://localhost.5000")
-                    .AllowAnyHeader()
-            );
+                builder.WithOrigins(settings.Value.ApiDomain)
+                    .AllowAnyHeader());
 
             app.UseMvc(routes =>
             {

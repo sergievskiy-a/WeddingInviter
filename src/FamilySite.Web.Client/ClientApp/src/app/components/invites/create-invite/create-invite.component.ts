@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Invite } from '../../../models/invite';
 import { Event } from '../../../models/event';
 import { Guest } from '../../../models/guest';
-import { environment } from '../../../../environments/environment.dev';
+import { environment } from '../../../../environments/environment';
 
 @Component({
   selector: 'app-create-invite',

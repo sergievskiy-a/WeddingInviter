@@ -1,0 +1,18 @@
+<div *ngIf="event" class="event" style="margin-bottom: 20px;">
+    <div class="img-holder">
+        <img src="images/events/{{ event.code }}.jpg" alt class="img img-responsive">
+    </div>
+    <div class="details">
+        <h3>{{ event.title }}</h3>
+        <ul>
+            <li><i class="fa fa-map-marker"></i> {{ event.location.title }}. {{ event.location.address }}, {{ event.location.city }}</li>
+            <li><i class="fa fa-clock-o"></i> {{ event.dateTime | date: 'Початок: HH:mm':'':'uk' }}</li>
+        </ul>
+        <p>{{ event.description }}</p>
+        <div *ngIf="event.location.googleMapPlaceId && event.location.googleMapPlaceId.length > 0">
+            <a class="see-location-btn popup-gmaps" href="{{ event.location.googleMapPlaceId }}" target="_blank">
+                Відкрити мапу <i class="fa fa-angle-right"></i>
+            </a>
+        </div>
+    </div>
+</div>

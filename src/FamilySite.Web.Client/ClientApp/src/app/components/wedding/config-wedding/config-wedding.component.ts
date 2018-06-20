@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { WeddingInfo } from '../../../models/weddingInfo';
 import { Event } from '../../../models/event';
 import { HttpClient } from '@angular/common/http';
-import { environment } from '../../../../environments/environment.dev';
+import { environment } from '../../../../environments/environment';
 
 @Component({
   selector: 'app-config-wedding',

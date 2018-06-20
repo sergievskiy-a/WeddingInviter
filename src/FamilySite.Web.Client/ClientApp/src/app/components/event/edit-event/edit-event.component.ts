@@ -2,7 +2,7 @@ import { Component, EventEmitter, Output, Input } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Event } from '../../../models/event';
 import { Location } from '../../../models/location';
-import { environment } from '../../../../environments/environment.dev';
+import { environment } from '../../../../environments/environment';
 
 @Component({
   selector: 'app-edit-event',

@@ -1,5 +1,6 @@
         <!-- end preloader -->
         <!-- start of hero -->
+        <div *ngIf="weddingInfo">
         <section class="hero">
             <div class="hero-slider hero-slider-s1">
                 <div class="slide-item">
@@ -66,7 +67,8 @@
                             <li><a href="#story">Історія</a></li>
                             <li><a href="#events">Розклад</a></li>
                             <li><a href="#people">Люди</a></li>
-                            <li><a href="#gallery">Галерея</a></li>
+                            <!-- <li><a href="#gallery">Галерея</a></li> -->
+                            <li><a href="#location">Як дістатись</a></li>
                             <!-- <li class="menu-item-has-children">
                                 <a href="javascript:void(0);">Blog</a>
                                 <ul class="sub-menu">
@@ -101,14 +103,13 @@
                             </div>
                             <div class="details">
                                 <div class="details-inner">
-                                    <h3>The groom</h3>
+                                    <h3>Наречений</h3>
                                     <p>Hi I am suntina , dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries.</p>
                                     <span class="signature">Suntina</span>
                                     <ul class="social-links">
-                                        <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-pinterest"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                                        <li><a href="https://www.facebook.com/a.sergievskiy/"><i class="fa fa-facebook"></i></a></li>
+                                        <li><a href="https://www.instagram.com/sergievskiy_anton/"><i class="fa fa-instagram"></i></a></li>
+                                        <li><a href="https://www.linkedin.com/in/antonsergievskiy/"><i class="fa fa-linkedin"></i></a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -116,14 +117,13 @@
                         <div class="gb bride">
                             <div class="details">
                                 <div class="details-inner">
-                                    <h3>The Bride</h3>
+                                    <h3>Наречена</h3>
                                     <p>Hi I am suntina , dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries.</p>
                                     <span class="signature">Famico</span>
                                     <ul class="social-links">
-                                        <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-pinterest"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                                            <li><a href="https://www.facebook.com/Katty.Korovchenko/"><i class="fa fa-facebook"></i></a></li>
+                                            <li><a href="https://www.instagram.com/k.korovchenko/"><i class="fa fa-instagram"></i></a></li>
+                                            <li><a href="https://www.linkedin.com/in/ekateryna-korovchenko-329014149/"><i class="fa fa-linkedin"></i></a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -143,13 +143,11 @@
             <div class="container">
                 <div class="row">
                     <div class="col col-md-4">
-                        <h2><span>We are waiting for.....</span> The adventure</h2>
+                        <h2 style="font-size: 3.8em !important"><span>We are waiting for.....</span> The adventure</h2>
                     </div>
                     <div class="col col-md-7 col-md-offset-1">
                         <div class="count-down-clock">
-                            <div id="clock">
-
-                            </div>
+                            <div id="clock"><div class="box"><div>{{ interval.days }}</div> <span>Days</span> </div><div class="box"><div>{{ interval.hours }}</div> <span>Hours</span> </div><div class="box"><div>{{ interval.minutes }}</div> <span>Mins</span> </div><div class="box"><div>{{ interval.seconds }}</div> <span>Secs</span> </div></div>
                         </div>
                     </div>
                 </div> <!-- end row -->
@@ -261,8 +259,6 @@
         </section>
         <!-- end cta -->
 
-
-
         <!-- start events-section -->
         <section class="events-section section-padding" id="events">
             <div class="container">
@@ -275,39 +271,10 @@
                     </div>
                 </div> <!-- end section-title -->
 
-                <div class="row">
+                <div *ngIf="weddingInfo.events" class="row">
                     <div class="col col-lg-10 col-lg-offset-1">
-                        <div class="event">
-                            <div class="img-holder">
-                                <img src="images/events/img-1.jpg" alt class="img img-responsive">
-                            </div>
-                            <div class="details">
-                                <h3>The reception</h3>
-                                <ul>
-                                    <li><i class="fa fa-map-marker"></i> 32 big bro road, Chanpai, London.</li>
-                                    <li><i class="fa fa-clock-o"></i> Nov 25 2017, 9AM - 5PM</li>
-                                </ul>
-                                <p>when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. </p>
-                                <a class="see-location-btn popup-gmaps" href="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d25211.21212385712!2d144.95275648773628!3d-37.82748510398018!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad642af0f11fd81%3A0x5045675218ce7e0!2zTWVsYm91cm5lIFZJQyAzMDA0LCDgpoXgprjgp43gpp_gp43gprDgp4fgprLgpr_gpq_gprzgpr4!5e0!3m2!1sbn!2sbd!4v1503742051881">
-                                    See location <i class="fa fa-angle-right"></i>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="event">
-                            <div class="img-holder">
-                                <img src="images/events/img-2.jpg" alt class="img img-responsive">
-                            </div>
-                            <div class="details">
-                                <h3>Wedding party</h3>
-                                <ul>
-                                    <li><i class="fa fa-map-marker"></i> 32 big bro road, Chanpai, London.</li>
-                                    <li><i class="fa fa-clock-o"></i> Nov 25 2017, 9AM - 5PM</li>
-                                </ul>
-                                <p>when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. </p>
-                                <a class="see-location-btn popup-gmaps" href="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3152.0160484383277!2d144.99053291585201!3d-37.81309307975254!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad642ef89a7e023%3A0xb1353055e38c1ab8!2sNew+York+Tomato+Cafe!5e0!3m2!1sbn!2sbd!4v1503743893919">
-                                    See location <i class="fa fa-angle-right"></i>
-                                </a>
-                            </div>
+                        <div *ngFor="let event of weddingInfo.events">
+                            <app-single-event [event]="event"></app-single-event>
                         </div>
                     </div>
                 </div> <!-- end row -->
@@ -561,13 +528,13 @@
         <!-- end inportant-people-section -->
 
         <!-- start getting-there-section -->
-        <section class="getting-there-section section-padding">
+        <section class="getting-there-section section-padding" id="location">
             <div class="container">
                 <div class="row">
                     <div class="col col-xs-12">
                         <div class="section-title-white">
                             <div class="vertical-line"><span><i class="fi flaticon-two"></i></span></div>
-                            <h2>Getting there</h2>
+                            <h2>Локація</h2>
                         </div>
                     </div>
                 </div> <!-- end section-title -->
@@ -582,6 +549,12 @@
                         <p> industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s</p>
                     </div>
                 </div> <!-- end row -->
+                <div class="row">
+                        <div class="col col-xs-12">
+                                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2537.0281201751845!2d30.41561901590706!3d50.5150435905893!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40d4cd5e327f2263%3A0x86e7cc2c7cb8895a!2z0KTQvtGA0YLQtdGG0Y8!5e0!3m2!1suk!2sua!4v1529501961897" width="100%" height="320" frameborder="0" style="border:0" allowfullscreen></iframe>
+                                <a class="see-location-btn" href="https://goo.gl/maps/BHTyfm8H2rE2" target="_blank">Відкрити мапу</a>
+                        </div>
+                    </div> <!-- end row -->
             </div> <!-- end container -->
         </section>
         <!-- end getting-there-section -->
@@ -601,3 +574,4 @@
             </div> <!-- end container -->
         </footer>
         <!-- end footer -->
+    </div>

@@ -4,8 +4,12 @@ import { NgModule } from '@angular/core';
 import { FormsModule  } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
+import { registerLocaleData } from '@angular/common';
+import localeUk from '@angular/common/locales/uk'; registerLocaleData(localeUk);
 
 import { CKEditorModule } from 'ngx-ckeditor';
+
+import { CountdownService } from './services/countdown.service';
 
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './components/nav-menu/nav-menu.component';
@@ -16,6 +20,9 @@ import { CreateInviteComponent } from './components/invites/create-invite/create
 import { GetInviteComponent } from './components/invites/get-invite/get-invite.component';
 import { ConfigWeddingComponent } from './components/wedding/config-wedding/config-wedding.component';
 import { EditEventComponent } from './components/event/edit-event/edit-event.component';
+import { SingleEventComponent } from './components/event/single-event/single-event.component';
+
+registerLocaleData(localeUk)
 
 @NgModule({
   declarations: [
@@ -27,7 +34,8 @@ import { EditEventComponent } from './components/event/edit-event/edit-event.com
     CreateInviteComponent,
     GetInviteComponent,
     ConfigWeddingComponent,
-    EditEventComponent
+    EditEventComponent,
+    SingleEventComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -44,7 +52,9 @@ import { EditEventComponent } from './components/event/edit-event/edit-event.com
       { path: 'fetch-data', component: FetchDataComponent },
     ])
   ],
-  providers: [],
+  providers: [ 
+    CountdownService
+   ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

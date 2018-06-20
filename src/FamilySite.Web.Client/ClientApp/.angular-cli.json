@@ -37,6 +37,7 @@
         "../node_modules/quill/dist/quill.js",
         "./assets/js/jquery-plugin-collection.js",
         "./assets/js/script.js",
+        "./assets/js/flat-surface-shader.js",
         "./assets/js/jquery.mb.YTPlayer.src.js",
         "./assets/js/spirit.js"
       ],

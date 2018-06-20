@@ -1,6 +1,5 @@
         <!-- end preloader -->
         <!-- start of hero -->
-        <div *ngIf="weddingInfo">
         <section class="hero">
             <div class="hero-slider hero-slider-s1">
                 <div class="slide-item">
@@ -99,13 +98,18 @@
                     <div class="col col-xs-12">
                         <div class="gb groom">
                             <div class="img-holder wow fadeInLeftSlow">
-                                <img src="images/couple/img-1.jpg" alt>
+                                <img style="opacity: 1;" src="images/couple/img-1.jpg" alt>
                             </div>
                             <div class="details">
                                 <div class="details-inner">
                                     <h3>Наречений</h3>
-                                    <p>Hi I am suntina , dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries.</p>
-                                    <span class="signature">Suntina</span>
+                                    <p>
+                                        Всім привіт! Я звичайний простий хлопчина з невеликого містечка родом. 
+                                        <br>Радий, що маю чудових батьків, вірних та перевірених друзів. Також пишаюсь, що накопив собі список хоббі.
+                                        <br>Якщо коротко, то: велосипед, лижі, музика, програмування.
+                                        <br>Але найбільша для мене радість - це та, яку зустрів майже 5 років тому. Моя принцеса і майбутня дружина - Катюша.
+                                    </p>
+                                    <span class="signature">Антон</span>
                                     <ul class="social-links">
                                         <li><a href="https://www.facebook.com/a.sergievskiy/"><i class="fa fa-facebook"></i></a></li>
                                         <li><a href="https://www.instagram.com/sergievskiy_anton/"><i class="fa fa-instagram"></i></a></li>
@@ -118,8 +122,9 @@
                             <div class="details">
                                 <div class="details-inner">
                                     <h3>Наречена</h3>
-                                    <p>Hi I am suntina , dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries.</p>
-                                    <span class="signature">Famico</span>
+                                    <p>Привіт! Якщо коротко про мене , то я одна з тих щасливих людей яка має майже все у своєму житті. Чудових батьків, гарну родину та вірних друзів.
+                                        <br>Але є ще одна людина якою я пишаюсь, ціную та кохаю, як своє життя, яка сприймає мене тою особистістю якою я зросла :)  Тою людиною є мій майбутній чоловік, той самий принц (без білого коня, але на велосипеді) - Антон.</p>
+                                    <span class="signature">Катя</span>
                                     <ul class="social-links">
                                             <li><a href="https://www.facebook.com/Katty.Korovchenko/"><i class="fa fa-facebook"></i></a></li>
                                             <li><a href="https://www.instagram.com/k.korovchenko/"><i class="fa fa-instagram"></i></a></li>
@@ -128,7 +133,7 @@
                                 </div>
                             </div>
                             <div class="img-holder wow fadeInRightSlow">
-                                <img src="images/couple/img-2.jpg" alt>
+                                <img style="opacity: 1;" src="images/couple/img-2.jpg" alt>
                             </div>
                         </div>
                     </div>
@@ -143,11 +148,11 @@
             <div class="container">
                 <div class="row">
                     <div class="col col-md-4">
-                        <h2 style="font-size: 3.8em !important"><span>We are waiting for.....</span> The adventure</h2>
+                        <h2 style="font-size: 3.2em !important"><span>Чекаємо на .....</span> Створення Сім'ї</h2>
                     </div>
                     <div class="col col-md-7 col-md-offset-1">
                         <div class="count-down-clock">
-                            <div id="clock"><div class="box"><div>{{ interval.days }}</div> <span>Days</span> </div><div class="box"><div>{{ interval.hours }}</div> <span>Hours</span> </div><div class="box"><div>{{ interval.minutes }}</div> <span>Mins</span> </div><div class="box"><div>{{ interval.seconds }}</div> <span>Secs</span> </div></div>
+                            <div id="clock"><div class="box"><div>{{ interval.days }}</div> <span>Днів</span> </div><div class="box"><div>{{ interval.hours }}</div> <span>Годин</span> </div><div class="box"><div>{{ interval.minutes }}</div> <span>Хвилин</span> </div><div class="box"><div>{{ interval.seconds }}</div> <span>Секунд</span> </div></div>
                         </div>
                     </div>
                 </div> <!-- end row -->
@@ -174,9 +179,12 @@
                             <div class="row">
                                 <div class="col col-md-6">
                                     <div class="story-text right-align-text">
-                                        <h3>First meet</h3>
-                                        <span class="date">Jan 12 2017</span>
-                                        <p>A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart. I am alone, and feel the charm of existence in this spot, which was created for the bliss of souls like mine. I am so happy, my dear friend, </p>
+                                        <h3>Перша зустріч</h3>
+                                        <span class="date">Вересень 2013</span>
+                                        <p>"Можна сказати, що наша історія почалася ще коли я закінчував школу та готувався до вступу. Адже вже тоді я знав, що начатимусь в КПІ та буду частиною Студентської ради.
+                                            <br>Так от, вперше ми зустрілись саме в університеті на зборах СтудРади. А перше спілкування відбулось на корпоративі ради. Це була база відпочинку "Чайка". 
+                                            <br>Я до сих пір з посмішкою згадую, як в мене в той вечір розболілася голова, і Катюша про мене попіклувалась. Вона знайшла в сумці пігулки від мігрені, принестла води і простягнула все це мені.
+                                            <br>І тоді я в неї закохався. От так ми вперше познайомились." — Антон.</p>
                                     </div>
                                 </div>
                                 <div class="col col-md-6">
@@ -196,9 +204,10 @@
                                         <i class="fa fa-heart"></i>
                                     </span>
                                     <div class="story-text">
-                                        <h3>First date</h3>
-                                        <span class="date">Feb 14 2017</span>
-                                        <p>A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart. I am alone, and feel the charm of existence in this spot, which was created for the bliss of souls like mine. I am so happy, my dear friend, </p>
+                                        <h3>Перше побачення</h3>
+                                        <span class="date">Жовтень 2013</span>
+                                        <p>"...Я пам'ятаю, що на нашому першому побаченні ми сиділи в кафешці на КПІ, пили чай і я розповідала Антону, що не вірю в щире кохання, мовляв, його не існує.
+                                            <br>І ще пам'ятаю, як я була проти того, щоб за мій чай платив Антон, але він настояв на своєму:)" — Катя.</p>
                                     </div>
                                 </div>
                             </div>
@@ -208,24 +217,22 @@
                                         <i class="fa fa-heart"></i>
                                     </span>
                                     <div class="story-text right-align-text">
-                                        <h3>Proposal</h3>
-                                        <span class="date">Apr 14 2017</span>
-                                        <p>A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart. I am alone, and feel the charm of existence in this spot, which was created for the bliss of souls like mine. I am so happy, my dear friend, </p>
+                                        <h3>Освідчення в почуттях</h3>
+                                        <span class="date">17 листопада 2013</span>
+                                        <p>"...Эдине, що я пам'ятаю з того дня - це був вечір, і Катя збиралась саме на днях їхати у Львів на змагання.
+                                            <br>А ще, в неї було чудове вбрання..." — Антон.</p>
                                     </div>
                                 </div>
                                 <div class="col col-md-6">
                                     <div class="img-holder right-align-text story-slider">
-                                        <img src="images/story/img-7.jpg" alt class="img img-responsive">
+                                        <img src="images/story/img-3.jpg" alt class="img img-responsive">
                                     </div>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col col-md-6">
                                     <div class="img-holder video-holder">
-                                        <img src="images/story/img-8.jpg" alt class="img img-responsive">
-                                        <a href="https://www.youtube.com/embed/XSGBVzeBUbk?autoplay=1" data-type="iframe" class="video-play-btn">
-                                            <i class="fa fa-play"></i>
-                                        </a>
+                                        <img src="images/story/img-4.jpg" alt class="img img-responsive">
                                     </div>
                                 </div>
                                 <div class="col col-md-6 text-holder">
@@ -233,9 +240,13 @@
                                         <i class="fa fa-heart"></i>
                                     </span>
                                     <div class="story-text">
-                                        <h3>Enagagement</h3>
-                                        <span class="date">Jul 14 2017</span>
-                                        <p>A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart. I am alone, and feel the charm of existence in this spot, which was created for the bliss of souls like mine. I am so happy, my dear friend, </p>
+                                        <h3>Пропозиція руки та серця</h3>
+                                        <span class="date">14 лютого 2018</span>
+                                        <p>"В той момент, коли я мріяла про довгоочікувану відпустку та катання на борді, Антон хвилювався та планував момент пропозиції.
+                                            <br>Моя подруга Ксенія та друзі Антона - Назар і Вадім ходили ще з Києва і виду не подавали.
+                                            <br>14 лютого 2018 року наступив той самий хвилюючий момент, коли Антон стояв посеред прикрашеного романтичними свічками, кульками, м'якими ведмежатами та пелюстаками роз в кафе на одному коліні.
+                                            <br>Коли він закінчив говорити - я довго не могла вимовити навіть і слова, так як я навіть і не здогадувалась, що мене може таке чекати.
+                                            <br>Слова кохання та пропозиція руки та серця залишаться в мене в серці назавжди!" — Катя.</p>
                                     </div>
                                 </div>
                             </div>
@@ -266,12 +277,12 @@
                     <div class="col col-xs-12">
                         <div class="section-title">
                             <div class="vertical-line"><span><i class="fi flaticon-two"></i></span></div>
-                            <h2>Wedding events</h2>
+                            <h2>Розклад</h2>
                         </div>
                     </div>
                 </div> <!-- end section-title -->
 
-                <div *ngIf="weddingInfo.events" class="row">
+                <div *ngIf="weddingInfo && weddingInfo.events" class="row">
                     <div class="col col-lg-10 col-lg-offset-1">
                         <div *ngFor="let event of weddingInfo.events">
                             <app-single-event [event]="event"></app-single-event>
@@ -290,7 +301,7 @@
                     <div class="col col-xs-12">
                         <div class="section-title">
                             <div class="vertical-line"><span><i class="fi flaticon-two"></i></span></div>
-                            <h2>Groomsmen &amp; Bridesmaid</h2>
+                            <h2>Дружби &amp; Дружки</h2>
                         </div>
                     </div>
                 </div> <!-- end section-title -->
@@ -301,10 +312,10 @@
                             <div class="tablist">
                                 <ul class="nav">
                                     <li class="active">
-                                        <a href="#groomsmen" data-toggle="tab">Groomsmen</a>
+                                        <a href="#groomsmen" data-toggle="tab">Дружби</a>
                                     </li>
                                     <li>
-                                        <a href="#bridesmaid" data-toggle="tab">Bridesmaid</a>
+                                        <a href="#bridesmaid" data-toggle="tab">Дружки</a>
                                     </li>
                                 </ul>
                             </div>
@@ -313,103 +324,45 @@
                                 <div class="tab-pane fade in active grid-wrapper" id="groomsmen">
                                     <div class="grid">
                                         <div class="img-holder">
-                                            <a href="images/groomsmen/img-1.jpg" class="popup-image">
-                                                <img src="images/groomsmen/img-1.jpg" alt class="img img-responsive">
+                                            <a href="images/groomsmen/nazik.jpg" class="popup-image">
+                                                <img src="images/groomsmen/nazik.jpg" alt class="img img-responsive">
                                             </a>
                                         </div>
                                         <div class="details">
-                                            <h3>Jhon Michel</h3>
-                                            <span>Best man</span>
+                                            <h3>Назар Коцемір</h3>
+                                            <span>Тамада</span>
                                             <ul class="social-links">
-                                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-pinterest"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-vimeo"></i></a></li>
+                                                <li><a href="https://www.instagram.com/kotsemir.nazariy/" target="_blank"><i class="fa fa-instagram"></i></a></li>
                                             </ul>
                                         </div>
                                     </div>
                                     <div class="grid">
                                         <div class="img-holder">
-                                            <a href="images/groomsmen/img-2.jpg" class="popup-image">
-                                                <img src="images/groomsmen/img-2.jpg" alt class="img img-responsive">
+                                            <a href="images/groomsmen/vadim.jpg" class="popup-image">
+                                                <img src="images/groomsmen/vadim.jpg" alt class="img img-responsive">
                                             </a>
                                         </div>
                                         <div class="details">
-                                            <h3>Chasmoos jhon</h3>
-                                            <span>Best friden</span>
+                                            <h3>Вадим Різник</h3>
+                                            <span>Хакер та ЗОЖник</span>
                                             <ul class="social-links">
-                                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-pinterest"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-vimeo"></i></a></li>
+                                                <li><a href="https://twitter.com/enjoying_sadnes/" target="_blank"><i class="fa fa-twitter"></i></a></li>
+                                                <li><a href="https://www.instagram.com/akk0rd/" target="_blank"><i class="fa fa-instagram"></i></a></li>
                                             </ul>
                                         </div>
                                     </div>
                                     <div class="grid">
                                         <div class="img-holder">
-                                            <a href="images/groomsmen/img-3.jpg" class="popup-image">
-                                                <img src="images/groomsmen/img-3.jpg" alt class="img img-responsive">
+                                            <a href="images/groomsmen/starosta.jpg" class="popup-image">
+                                                <img src="images/groomsmen/starosta.jpg" alt class="img img-responsive">
                                             </a>
                                         </div>
                                         <div class="details">
-                                            <h3>Kaiste pate</h3>
-                                            <span>Friend</span>
+                                            <h3>Жека Власенко</h3>
+                                            <span>Чєловєк з Генштабу</span>
                                             <ul class="social-links">
-                                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-pinterest"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-vimeo"></i></a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="grid">
-                                        <div class="img-holder">
-                                            <a href="images/groomsmen/img-4.jpg" class="popup-image">
-                                                <img src="images/groomsmen/img-4.jpg" alt class="img img-responsive">
-                                            </a>
-                                        </div>
-                                        <div class="details">
-                                            <h3>Hatu Michel</h3>
-                                            <span>Friend</span>
-                                            <ul class="social-links">
-                                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-pinterest"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-vimeo"></i></a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="grid">
-                                        <div class="img-holder">
-                                            <a href="images/groomsmen/img-5.jpg" class="popup-image">
-                                                <img src="images/groomsmen/img-5.jpg" alt class="img img-responsive">
-                                            </a>
-                                        </div>
-                                        <div class="details">
-                                            <h3>Michel doin</h3>
-                                            <span>Friend</span>
-                                            <ul class="social-links">
-                                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-pinterest"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-vimeo"></i></a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="grid">
-                                        <div class="img-holder">
-                                            <a href="images/groomsmen/img-6.jpg" class="popup-image">
-                                                <img src="images/groomsmen/img-6.jpg" alt class="img img-responsive">
-                                            </a>
-                                        </div>
-                                        <div class="details">
-                                            <h3>Topper jone</h3>
-                                            <span>Friend</span>
-                                            <ul class="social-links">
-                                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-pinterest"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-vimeo"></i></a></li>
+                                                <li><a href="https://www.facebook.com/zhenia.vlasenko" target="_blank"><i class="fa fa-facebook"></i></a></li>
+                                                <li><a href="https://www.instagram.com/badtrip4life/" target="_blank"><i class="fa fa-instagram"></i></a></li>
                                             </ul>
                                         </div>
                                     </div>
@@ -418,103 +371,46 @@
                                 <div class="tab-pane fade grid-wrapper" id="bridesmaid">
                                     <div class="grid">
                                         <div class="img-holder">
-                                            <a href="images/bridesmaid/img-1.jpg" class="popup-image">
-                                                <img src="images/bridesmaid/img-1.jpg" alt class="img img-responsive">
+                                            <a href="images/bridesmaid/vasilenko.jpg" class="popup-image">
+                                                <img src="images/bridesmaid/vasilenko.jpg" alt class="img img-responsive">
                                             </a>
                                         </div>
                                         <div class="details">
-                                            <h3>Rachel Li</h3>
-                                            <span>Made of honor</span>
+                                            <h3>Ксенія Василенко</h3>
+                                            <span>"Записывемся на ноготочки"(с)</span>
                                             <ul class="social-links">
-                                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-pinterest"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-vimeo"></i></a></li>
+                                                <li><a href="https://www.facebook.com/profile.php?id=100006038178245" target="_blank"><i class="fa fa-facebook"></i></a></li>
+                                                <li><a href="https://www.instagram.com/hey_kseniia/"><i class="fa fa-instagram" target="_blank"></i></a></li>
                                             </ul>
                                         </div>
                                     </div>
                                     <div class="grid">
                                         <div class="img-holder">
-                                            <a href="images/bridesmaid/img-2.jpg" class="popup-image">
-                                                <img src="images/bridesmaid/img-2.jpg" alt class="img img-responsive">
+                                            <a href="images/bridesmaid/bolotenko.jpg" class="popup-image">
+                                                <img src="images/bridesmaid/bolotenko.jpg" alt class="img img-responsive">
                                             </a>
                                         </div>
                                         <div class="details">
-                                            <h3>Male Vign</h3>
-                                            <span>Best friend</span>
+                                            <h3>Катя Болотенко</h3>
+                                            <span>З Донбасу</span>
                                             <ul class="social-links">
-                                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-pinterest"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-vimeo"></i></a></li>
+                                                <li><a href="https://www.facebook.com/katerina.bolotenko" target="_blank"><i class="fa fa-facebook"></i></a></li>
+                                                <li><a href="https://www.instagram.com/bolotenko.katerina/" target="_blank"><i class="fa fa-instagram" target="_blank"></i></a></li>
                                             </ul>
                                         </div>
                                     </div>
                                     <div class="grid">
                                         <div class="img-holder">
-                                            <a href="images/bridesmaid/img-3.jpg" class="popup-image">
-                                                <img src="images/bridesmaid/img-3.jpg" alt class="img img-responsive">
+                                            <a href="images/bridesmaid/vegan.jpg" class="popup-image">
+                                                <img src="images/bridesmaid/vegan.jpg" alt class="img img-responsive">
                                             </a>
                                         </div>
                                         <div class="details">
-                                            <h3>Jonny Mich</h3>
-                                            <span>Friend</span>
+                                            <h3>Мері Ваградян</h3>
+                                            <span>Не веган, а вегетаріанка<small>(Не путать)</small></span>
                                             <ul class="social-links">
-                                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-pinterest"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-vimeo"></i></a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="grid">
-                                        <div class="img-holder">
-                                            <a href="images/bridesmaid/img-4.jpg" class="popup-image">
-                                                <img src="images/bridesmaid/img-4.jpg" alt class="img img-responsive">
-                                            </a>
-                                        </div>
-                                        <div class="details">
-                                            <h3>Brodd Wid</h3>
-                                            <span>Friend</span>
-                                            <ul class="social-links">
-                                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-pinterest"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-vimeo"></i></a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="grid">
-                                        <div class="img-holder">
-                                            <a href="images/bridesmaid/img-5.jpg" class="popup-image">
-                                                <img src="images/bridesmaid/img-5.jpg" alt class="img img-responsive">
-                                            </a>
-                                        </div>
-                                        <div class="details">
-                                            <h3>Nokshal bedi</h3>
-                                            <span>Friend</span>
-                                            <ul class="social-links">
-                                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-pinterest"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-vimeo"></i></a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="grid">
-                                        <div class="img-holder">
-                                            <a href="images/bridesmaid/img-6.jpg" class="popup-image">
-                                                <img src="images/bridesmaid/img-6.jpg" alt class="img img-responsive">
-                                            </a>
-                                        </div>
-                                        <div class="details">
-                                            <h3>Holly Fie</h3>
-                                            <span>Friend</span>
-                                            <ul class="social-links">
-                                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-pinterest"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-vimeo"></i></a></li>
+                                                <li><a href="https://www.facebook.com/katerina.bolotenko/" target="_blank"><i class="fa fa-facebook"></i></a></li>
+                                                <li><a href="https://www.instagram.com/imaryowl/"><i class="fa fa-instagram" target="_blank"></i></a></li>
                                             </ul>
                                         </div>
                                     </div>
@@ -539,20 +435,24 @@
                     </div>
                 </div> <!-- end section-title -->
 
-                <div class="row content">
+                <div class="row content" style="margin-bottom: 40px;">
                     <div class="col col-md-6">
-                        <h3>Transportation</h3>
-                        <p> industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s</p>
+                        <h3>Як дістатись?</h3>
+                        <p> Ресторан "Фотреця" знаходиться за адресою: проспект Георгія Гонгадзе, 21, м. Київ.
+                            <br>Діставатись рекомендуємо на таксі <a style="color: yellow;" href="https://www.uklon.com.ua" target="_blank">Uklon</a> або від станції метро "Оболонь" на маршрутці №102. Дорога на маршрутці займає ~40хв.</p>
                     </div>
                     <div class="col col-md-6">
-                        <h3>Accommodations</h3>
-                        <p> industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s</p>
+                        <h3>Розміщення</h3>
+                        <p> Якщо вам потрібне місце для ночівлі - зв'яжіться з нами, і ми подбаємо про це. 
+                            <br>Наші телефони:
+                            <br><a style="color: initial" href="tel:+380935024896">+38 093 502 48 96</a> Антон
+                            <br><a style="color: initial" href="tel:+380938772917">+38 093 877 29 17</a> Катя
+                        </p>
                     </div>
                 </div> <!-- end row -->
                 <div class="row">
                         <div class="col col-xs-12">
-                                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2537.0281201751845!2d30.41561901590706!3d50.5150435905893!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40d4cd5e327f2263%3A0x86e7cc2c7cb8895a!2z0KTQvtGA0YLQtdGG0Y8!5e0!3m2!1suk!2sua!4v1529501961897" width="100%" height="320" frameborder="0" style="border:0" allowfullscreen></iframe>
-                                <a class="see-location-btn" href="https://goo.gl/maps/BHTyfm8H2rE2" target="_blank">Відкрити мапу</a>
+                                <iframe src="https://www.google.com.ua/maps/embed?pb=!1m18!1m12!1m3!1d2537.0281201751845!2d30.41561901590706!3d50.5150435905893!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40d4cd5e327f2263%3A0x86e7cc2c7cb8895a!2z0KTQvtGA0YLQtdGG0Y8!5e0!3m2!1suk!2sua!4v1529501961897" width="100%" height="520" frameborder="0" style="border:0" allowfullscreen></iframe>
                         </div>
                     </div> <!-- end row -->
             </div> <!-- end container -->
@@ -568,10 +468,8 @@
                 <div class="row">
                     <div class="col col-xs-12">
                         <h2>Forever and Always Our Love</h2>
-                        <span>- Mick (The groom)</span>
                     </div>
                 </div> <!-- end row -->
             </div> <!-- end container -->
         </footer>
         <!-- end footer -->
-    </div>

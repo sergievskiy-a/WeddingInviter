@@ -12,25 +12,19 @@ import { CKEditorModule } from 'ngx-ckeditor';
 import { CountdownService } from './services/countdown.service';
 
 import { AppComponent } from './app.component';
-import { NavMenuComponent } from './components/nav-menu/nav-menu.component';
 import { HomeComponent } from './components/home/home.component';
-import { CounterComponent } from './components/counter/counter.component';
-import { FetchDataComponent } from './components/fetch-data/fetch-data.component';
 import { CreateInviteComponent } from './components/invites/create-invite/create-invite.component';
 import { GetInviteComponent } from './components/invites/get-invite/get-invite.component';
 import { ConfigWeddingComponent } from './components/wedding/config-wedding/config-wedding.component';
 import { EditEventComponent } from './components/event/edit-event/edit-event.component';
 import { SingleEventComponent } from './components/event/single-event/single-event.component';
 
-registerLocaleData(localeUk)
+registerLocaleData(localeUk);
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavMenuComponent,
     HomeComponent,
-    CounterComponent,
-    FetchDataComponent,
     CreateInviteComponent,
     GetInviteComponent,
     ConfigWeddingComponent,
@@ -48,11 +42,10 @@ registerLocaleData(localeUk)
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'invite/create', component: CreateInviteComponent},
       { path: 'wedding', component: ConfigWeddingComponent },
-      { path: ':alias', component: GetInviteComponent },
-      { path: 'fetch-data', component: FetchDataComponent },
+      { path: ':alias', component: GetInviteComponent }
     ])
   ],
-  providers: [ 
+  providers: [
     CountdownService
    ],
   bootstrap: [AppComponent]

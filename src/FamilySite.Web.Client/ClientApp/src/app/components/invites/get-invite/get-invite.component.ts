@@ -1,6 +1,7 @@
 import { Component, OnInit, Inject, ViewEncapsulation } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 import { Invite } from '../../../models/invite';
 import { Guest } from '../../../models/guest';
 import { InviteAnswer } from '../../../models/inviteAnswer';
@@ -20,7 +21,7 @@ export class GetInviteComponent implements OnInit {
   public loading: boolean;
   public step: number;
 
-  constructor(private http: HttpClient, private route: ActivatedRoute) {
+  constructor(private http: HttpClient, private route: ActivatedRoute, private router: Router) {
   }
 
   ngOnInit() {
@@ -29,17 +30,24 @@ export class GetInviteComponent implements OnInit {
     });
 
     this.http.get<Invite>(environment.baseApiUrl + 'api/invites/' + this.alias).subscribe(result => {
-      this.invite = result;
+        if (result) {
+          this.invite = result;
+        } else {
+          this.router.navigateByUrl('/');
+        }
 
-      const hasAnswer = this.invite.inviteAnswer && (this.invite.inviteAnswer.going === true || this.invite.inviteAnswer.going === false);
-      if (hasAnswer) {
-        this.step = 3;
-      } else {
-        this.invite.inviteAnswer = new InviteAnswer();
-        this.step = 1;
-      }
-      this.setGreeting(this.invite.guests);
-    }, error => console.error(error));
+        const hasAnswer = this.invite.inviteAnswer && (this.invite.inviteAnswer.going === true || this.invite.inviteAnswer.going === false);
+        if (hasAnswer) {
+          this.step = 3;
+        } else {
+          this.invite.inviteAnswer = new InviteAnswer();
+          this.step = 1;
+        }
+        this.setGreeting(this.invite.guests);
+      }, error => {
+        this.router.navigateByUrl('/');
+        console.log(error);
+      });
   }
 
   setGreeting(guests: Guest[]) {

@@ -77,7 +77,7 @@ export class GetInviteComponent implements OnInit {
     if (!isGoing) {
       this.step = 4;
       this.loading = true;
-      this.http.post(environment.baseApiUrl + 'api/invites/' + this.alias + '/answer', this.invite.inviteAnswer).subscribe(response => {
+      this.http.put(environment.baseApiUrl + 'api/invites/' + this.alias + '/answer', this.invite.inviteAnswer).subscribe(response => {
         const result = response;
         this.loading = false;
       }, error => console.error(error));

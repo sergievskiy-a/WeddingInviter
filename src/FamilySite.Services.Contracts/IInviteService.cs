@@ -1,4 +1,5 @@
-﻿using FamilySite.Models;
+﻿using System.Collections.Generic;
+using FamilySite.Models;
 
 namespace FamilySite.Services.Contracts
 {
@@ -11,6 +12,8 @@ namespace FamilySite.Services.Contracts
         int AddInvite(InviteModel model);
 
         void UpdateInvite(InviteModel model);
+
+        ICollection<TResult> GetInvitesWithAnswers<TResult>();
 
         void CreateInviteAnswer(InviteAnswerModel model);
 

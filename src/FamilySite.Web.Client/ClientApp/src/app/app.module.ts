@@ -14,6 +14,7 @@ import { CountdownService } from './services/countdown.service';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
 import { CreateInviteComponent } from './components/invites/create-invite/create-invite.component';
+import { GetInviteAnswersComponent } from './components/invites/get-invite-answers/get-invite-answers.component';
 import { GetInviteComponent } from './components/invites/get-invite/get-invite.component';
 import { ConfigWeddingComponent } from './components/wedding/config-wedding/config-wedding.component';
 import { EditEventComponent } from './components/event/edit-event/edit-event.component';
@@ -26,6 +27,7 @@ registerLocaleData(localeUk);
     AppComponent,
     HomeComponent,
     CreateInviteComponent,
+    GetInviteAnswersComponent,
     GetInviteComponent,
     ConfigWeddingComponent,
     EditEventComponent,
@@ -40,8 +42,9 @@ registerLocaleData(localeUk);
 
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
-      { path: 'invite/create', component: CreateInviteComponent},
-      { path: 'wedding', component: ConfigWeddingComponent },
+      { path: 'invite/create', component: CreateInviteComponent, pathMatch: 'full'},
+      { path: 'invites', component: GetInviteAnswersComponent, pathMatch: 'full'},
+      { path: 'wedding', component: ConfigWeddingComponent, pathMatch: 'full' },
       { path: ':alias', component: GetInviteComponent }
     ])
   ],

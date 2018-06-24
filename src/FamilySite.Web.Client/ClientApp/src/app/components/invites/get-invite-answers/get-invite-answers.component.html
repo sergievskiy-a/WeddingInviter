@@ -1,0 +1,31 @@
+<section>
+  <div class="container">
+    <div class="row">
+      <div class="content-section">
+
+        <div *ngIf="invites">
+          <div *ngFor="let invite of invites">
+            <p>
+              <br>
+              <span *ngFor="let guest of invite.guests">{{guest.firstName}} {{guest.lastName}} (
+                <span *ngIf="guest.fromGroom">от Антона</span>
+                <span *ngIf="!guest.fromGroom">от Каті</span>); </span>
+            </p>
+            <p>
+              <span *ngIf="invite.customGreeting?.length > 0">Звернення: {{invite.customGreeting}} </span>( {{invite.alias}} ) </p>
+            <p *ngIf="invite.inviteAnswer?.going != null && invite.inviteAnswer?.going != undefined ">
+              <span *ngIf="invite.inviteAnswer.going === true">Будуть</span>
+              <span *ngIf="invite.inviteAnswer.going === false">НЕ Будуть</span>
+            </p>
+            <p *ngIf="invite.inviteAnswer?.needHotel != null && invite.inviteAnswer?.needHotel != undefined ">
+              <span *ngIf="invite.inviteAnswer.needHotel === true">Треба готель</span>
+              <span *ngIf="invite.inviteAnswer.needHotel === false">НЕ Треба готель</span>
+            </p>
+            <p>{{invite.inviteAnswer?.comment}}</p>
+            <hr>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

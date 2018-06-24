@@ -101,6 +101,17 @@ namespace FamilySite.Services
             this.answerRepository.Save();
         }
 
+        public ICollection<TResult> GetInvitesWithAnswers<TResult>()
+        {
+            var invites = this.inviteRepository
+                .GetMany()
+                .AsNoTracking()
+                .ProjectTo<TResult>(this.mapper.ConfigurationProvider)
+                .ToList();
+
+            return invites;
+        }
+
         public void UpdateInviteAnswer(InviteAnswerModel model)
         {
             var answeEntity = this.answerRepository.GetSingle(x => x.InviteId == model.InviteId);

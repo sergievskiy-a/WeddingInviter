@@ -32,6 +32,14 @@ namespace FamilySite.Web.Api.Controllers
             return Ok(inviteDto);
         }
 
+        [HttpGet("answers"), Authorize]
+        public IActionResult GetAnswers()
+        {
+            var inviteDtos = this.inviteService.GetInvitesWithAnswers<GetInviteDto>();
+
+            return Ok(inviteDtos);
+        }
+
         [HttpPost, Authorize]
         public IActionResult Create([FromBody] CreateInviteDto dto)
         {

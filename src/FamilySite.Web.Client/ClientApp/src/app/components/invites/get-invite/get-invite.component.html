@@ -19,7 +19,7 @@
       <div class="col col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
         <form class="form validate-rsvp-form row">
           <div class="col-sm-12">
-            <p *ngIf="step == 1 || step > 2">{{ greeting }}
+            <p *ngIf="step == 1">{{ greeting }}
               <span [innerHTML]="invite.description"></span>
             </p>
             <div *ngIf="step == 1">
@@ -55,6 +55,7 @@
             <div *ngIf="invite.inviteAnswer.going">
               <p>Дякуємо за відповідь. Чекаємо з нетерпінням!
                 <br>Більш детальну інформацію про місце, дату, час, розклад - можете переглянути на нашому <a href="/">сайті</a>.
+                <br>P.S. Також, ми вам будемо вдячні, якщо ви НЕ будете дарити квіти)
               </p>
             </div>
             <div *ngIf="!invite.inviteAnswer.going">
